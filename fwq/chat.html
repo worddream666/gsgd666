@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>在线聊天</title>
+    <style type="text/css">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+            max-width: 100%;
+            position: relative;
+        }
+
+        /* ---- Sidebar: 流式宽度，遮罩层模式由JS LayoutManager控制 ---- */
+        .user-list {
+            width: clamp(180px, 20vw, 280px);
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease;
+        }
+        .layout-overlay .user-list {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: min(80vw, 320px);
+            z-index: 100;
+            background: #1a1a2e;
+            border-right: 1px solid rgba(255,255,255,0.15);
+            transform: translateX(-100%);
+            box-shadow: 2px 0 20px rgba(0,0,0,0.5);
+        }
+        .layout-overlay .user-list.open { transform: translateX(0); }
+        .user-list-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+        .user-list-overlay.show { display: block; }
+        .mobile-toggle-users { display: none; }
+        .layout-overlay .mobile-toggle-users { display: inline-flex; }
+        .mobile-back-btn { display: none; }
+        .layout-overlay .mobile-back-btn { display: inline-flex; }
+
+        .user-list-header {
+            padding: clamp(10px, 2vw, 15px);
+            background: rgba(255, 255, 255, 0.08);
+            font-weight: bold;
+            font-size: clamp(13px, 1.4vw, 15px);
+            display: flex;
+            align-items: center;
+            gap: clamp(6px, 1vw, 8px);
+        }
+        .online-count {
+            background: #4ade80;
+            color: #000;
+            font-size: clamp(11px, 1.2vw, 13px);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .users {
+            flex: 1;
+            overflow-y: auto;
+            padding: clamp(6px, 1.2vw, 10px);
+        }
+        .user-item {
+            display: flex;
+            align-items: center;
+            gap: clamp(6px, 1.2vw, 10px);
+            padding: clamp(8px, 1.2vw, 12px);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-bottom: 5px;
+        }
+        .user-item:hover { background: rgba(255, 255, 255, 0.1); }
+        .user-item.active { background: rgba(102, 126, 234, 0.3); }
+        .user-avatar {
+            width: clamp(30px, 3.5vw, 40px);
+            height: clamp(30px, 3.5vw, 40px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(12px, 1.4vw, 15px);
+            font-weight: bold;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .user-status {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: clamp(8px, 1.2vw, 12px);
+            height: clamp(8px, 1.2vw, 12px);
+            border-radius: 50%;
+            background: #4ade80;
+            border: 2px solid #1a1a2e;
+        }
+        .user-status.offline { background: #6b7280; }
+        .user-info { flex: 1; overflow: hidden; }
+        .user-name {
+            font-size: clamp(12px, 1.3vw, 14px);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .user-level { font-size: clamp(10px, 1.1vw, 12px); color: #888; }
+
+        /* ---- 聊天区域 ---- */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .chat-header {
+            padding: clamp(10px, 2vw, 20px);
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: clamp(8px, 1.5vw, 12px);
+        }
+        .chat-avatar {
+            width: clamp(32px, 4vw, 44px);
+            height: clamp(32px, 4vw, 44px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(14px, 1.6vw, 18px);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .chat-title { flex: 1; }
+        .chat-name { font-size: clamp(14px, 1.6vw, 17px); font-weight: bold; }
+        .chat-status { font-size: clamp(11px, 1.2vw, 13px); color: #4ade80; }
+
+        /* ---- 消息列表 ---- */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: clamp(8px, 2vw, 20px);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(8px, 1.2vw, 15px);
+        }
+        .message {
+            display: flex;
+            gap: clamp(6px, 1vw, 10px);
+            max-width: clamp(70%, 80%, 90%);
+        }
+        .message.self { margin-left: auto; flex-direction: row-reverse; }
+        .message-avatar {
+            width: clamp(28px, 3.5vw, 38px);
+            height: clamp(28px, 3.5vw, 38px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(12px, 1.3vw, 14px);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .message.self .message-avatar {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+        }
+        .message-content { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .message-name { font-size: clamp(11px, 1.2vw, 13px); color: #888; }
+        .message.self .message-name { text-align: right; }
+        .message-bubble {
+            padding: clamp(8px, 1.5vw, 16px);
+            border-radius: 18px;
+            font-size: clamp(13px, 1.4vw, 15px);
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        .message:not(.self) .message-bubble {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0 18px 18px 18px;
+        }
+        .message.self .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 18px 0 18px 18px;
+        }
+        .message-time { font-size: clamp(10px, 1.1vw, 12px); color: #666; }
+        .message.self .message-time { text-align: right; }
+
+        /* ---- 输入区域 ---- */
+        .input-area {
+            padding: clamp(8px, 1.5vw, 15px);
+            background: rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: clamp(6px, 1vw, 10px);
+        }
+        .input-wrapper {
+            flex: 1;
+            display: flex;
+            gap: clamp(6px, 1vw, 10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 0 clamp(10px, 1.5vw, 15px);
+        }
+        .input-field {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            padding: clamp(8px, 1.2vw, 12px) 0;
+            font-size: clamp(13px, 1.4vw, 15px);
+        }
+        .input-field::placeholder { color: #666; }
+        .send-btn {
+            width: clamp(34px, 4vw, 44px);
+            height: clamp(34px, 4vw, 44px);
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+        .send-btn:hover { transform: scale(1.05); }
+        .send-btn:active { transform: scale(0.95); }
+        .send-btn svg { width: 18px; height: 18px; fill: #fff; }
+
+        /* ---- 系统消息 ---- */
+        .system-message {
+            text-align: center;
+            padding: clamp(6px, 1vw, 12px) clamp(12px, 2vw, 20px);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            font-size: clamp(11px, 1.2vw, 13px);
+            color: #888;
+            margin: 10px auto;
+            max-width: clamp(50%, 70%, 90%);
+        }
+
+        /* ---- 系统公告 ---- */
+        .notices {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            max-height: 120px;
+            overflow-y: auto;
+        }
+        .notice-item {
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-align: center;
+            animation: noticeFadeIn 0.5s ease;
+        }
+        .notice-item.system {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .notice-item.defeat {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        @keyframes noticeFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---- 滚动条 ---- */
+        ::-webkit-scrollbar { width: clamp(4px, 0.6vw, 8px); }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+
+        /* ---- 空状态 ---- */
+        .empty-state {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+        .empty-icon { font-size: clamp(36px, 6vw, 56px); margin-bottom: clamp(8px, 2vw, 15px); }
+        .empty-text { font-size: clamp(13px, 1.4vw, 15px); }
+
+        /* ---- 标签栏 ---- */
+        .tab-bar {
+            display: flex;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tab-item {
+            flex: 1;
+            padding: clamp(8px, 1.2vw, 12px);
+            text-align: center;
+            cursor: pointer;
+            font-size: clamp(12px, 1.3vw, 14px);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .tab-item:hover { background: rgba(255, 255, 255, 0.05); }
+        .tab-item.active { background: rgba(255, 255, 255, 0.1); border-bottom: 2px solid #667eea; }
+
+        /* ---- 登录面板 ---- */
+        .login-panel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: clamp(16px, 3vw, 30px);
+            text-align: center;
+            width: min(90vw, 400px);
+        }
+        .login-panel h3 { font-size: clamp(16px, 2vw, 20px); margin-bottom: 10px; }
+        .login-panel input {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: clamp(10px, 1.5vw, 14px) clamp(12px, 1.5vw, 15px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: clamp(13px, 1.4vw, 15px);
+            outline: none;
+        }
+        .login-panel input::placeholder { color: #666; }
+        .login-panel button {
+            padding: clamp(10px, 1.5vw, 14px) clamp(24px, 4vw, 40px);
+            border-radius: 25px;
+            border: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            font-size: clamp(13px, 1.4vw, 15px);
+            cursor: pointer;
+            margin: 10px 10px 0 0;
+        }
+        .login-panel button:hover { opacity: 0.9; }
+        .login-error { color: #f87171; font-size: clamp(12px, 1.3vw, 14px); margin-top: 10px; }
+
+        /* ---- 当前用户栏 ---- */
+        .current-user-bar {
+            padding: clamp(8px, 1.2vw, 14px) clamp(10px, 1.5vw, 15px);
+            background: rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: clamp(12px, 1.3vw, 14px);
+        }
+        .current-user-bar span { color: #667eea; font-weight: bold; }
+        .current-user-bar button:last-child {
+            background: none;
+            border: none;
+            color: #f87171;
+            cursor: pointer;
+            font-size: clamp(12px, 1.3vw, 14px);
+            padding: 4px 8px;
+        }
+        .mobile-toggle-users {
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: clamp(16px, 2vw, 20px);
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 8px;
+            margin-right: 8px;
+        }
+        .mobile-back-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: clamp(16px, 2vw, 20px);
+            cursor: pointer;
+            padding: 4px 8px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-panel" id="loginPanel">
+        <h3>请登录</h3>
+        <input type="text" id="loginUsername" placeholder="用户名" />
+        <input type="password" id="loginPassword" placeholder="密码" />
+        <button onclick="login()">登录</button>
+        <button onclick="showRegister()">注册</button>
+        <div class="login-error" id="loginError"></div>
+    </div>
+    
+    <div class="login-panel" id="registerPanel" style="display: none;">
+        <h3>注册账号</h3>
+        <input type="text" id="regUsername" placeholder="用户名" />
+        <input type="password" id="regPassword" placeholder="密码" />
+        <input type="text" id="regEmail" placeholder="邮箱(可选)" />
+        <button onclick="register()">注册</button>
+        <button onclick="showLogin()">返回登录</button>
+        <div class="login-error" id="regError"></div>
+    </div>
+    
+    <div class="user-list-overlay" id="userListOverlay" onclick="toggleUserList()"></div>
+
+    <div id="chatContainer" style="display: none;">
+        <div class="current-user-bar">
+            <button class="mobile-toggle-users" id="mobileToggleUsers" onclick="toggleUserList()">☰</button>
+            <span>当前用户: <span id="usernameDisplay"></span></span>
+            <button onclick="logout()">退出</button>
+        </div>
+
+        <div class="container">
+            <div class="user-list" id="userListPanel">
+                <div class="user-list-header">
+                    <button class="mobile-back-btn" onclick="closeUserList()">✕</button>
+                    <span>在线玩家</span>
+                    <span class="online-count" id="onlineCount">0</span>
+                </div>
+                <div class="users" id="userList">
+                    <div class="loading">加载中...</div>
+                </div>
+            </div>
+            
+            <div class="chat-area">
+                <div class="tab-bar">
+                    <div class="tab-item active" data-tab="private">私聊</div>
+                    <div class="tab-item" data-tab="public">世界</div>
+                </div>
+                <div class="chat-header" id="chatHeader">
+                    <div class="empty-state">
+                        <div class="empty-icon">💬</div>
+                        <div class="empty-text">选择一个玩家开始聊天</div>
+                    </div>
+                </div>
+                <!-- 系统公告区域 -->
+                <div class="notices" id="notices"></div>
+                
+                <div class="messages" id="messages">
+                    <div class="empty-state">
+                        <div class="empty-icon">👥</div>
+                        <div class="empty-text">暂无消息</div>
+                    </div>
+                </div>
+                <div class="input-area" id="inputArea" style="display: none;">
+                    <div class="input-wrapper">
+                        <input type="text" class="input-field" id="messageInput" placeholder="输入消息..." />
+                        <button class="send-btn" id="sendBtn">
+                            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        /**
+         * 格式化北京时间的显示（处理服务端可能存储的UTC时间）
+         * @param {string} dateStr - '2024-01-01 12:34:56' 格式
+         */
+        function formatBeijingTime(dateStr) {
+            if (!dateStr) return '';
+            // 尝试解析为UTC时间（服务器可能存储UTC），转换为北京时间(UTC+8)
+            var match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})\s+(\d{2}):(\d{2}):(\d{2})$/);
+            if (!match) return dateStr;
+            var utcMs = Date.UTC(
+                parseInt(match[1], 10),
+                parseInt(match[2], 10) - 1,
+                parseInt(match[3], 10),
+                parseInt(match[4], 10),
+                parseInt(match[5], 10),
+                parseInt(match[6], 10)
+            );
+            // 加上8小时得到北京时间
+            var bjDate = new Date(utcMs + 8 * 3600000);
+            var y = bjDate.getUTCFullYear();
+            var m = ('0' + (bjDate.getUTCMonth() + 1)).slice(-2);
+            var d = ('0' + bjDate.getUTCDate()).slice(-2);
+            var h = ('0' + bjDate.getUTCHours()).slice(-2);
+            var min = ('0' + bjDate.getUTCMinutes()).slice(-2);
+            var sec = ('0' + bjDate.getUTCSeconds()).slice(-2);
+            return y + '-' + m + '-' + d + ' ' + h + ':' + min + ':' + sec;
+        }
+
+        // 服务器地址（部署时请修改为实际服务器地址）
+const API_URL = '/api.php';
+        let myUsername = '';
+        let token = '';
+        let currentTab = 'private';
+        let currentUserId = null;
+        let currentUserName = null;
+        
+        // ==================== 违禁词检测系统 ====================
+        let BAD_WORDS = [];
+        
+        /**
+         * 初始化违禁词库
+         */
+        async function loadBadWords() {
+            try {
+                const response = await fetch('data/badwords.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    BAD_WORDS = data.words || [];
+                    console.log('[Chat] 违禁词库加载完成，共 ' + BAD_WORDS.length + ' 个词');
+                } else {
+                    console.error('[Chat] 违禁词库加载失败');
+                }
+            } catch (error) {
+                console.error('[Chat] 加载违禁词库出错:', error);
+            }
+        }
+        
+        /**
+         * 检查文本是否包含违禁词
+         * @param {string} text - 要检查的文本
+         * @returns {boolean} - 是否包含违禁词
+         */
+        function hasBadWords(text) {
+            if (!text || BAD_WORDS.length === 0) return false;
+            for (let word of BAD_WORDS) {
+                if (text.includes(word)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        /**
+         * 将文本中的违禁词替换为星号
+         * @param {string} text - 要处理的文本
+         * @returns {string} - 处理后的文本
+         */
+        function replaceBadWords(text) {
+            if (!text || BAD_WORDS.length === 0) return text;
+            let result = text;
+            for (let word of BAD_WORDS) {
+                if (result.includes(word)) {
+                    result = result.replace(new RegExp(word, 'g'), '*'.repeat(word.length));
+                }
+            }
+            return result;
+        }
+        
+        /**
+         * 检查文本是否包含违禁词（用于角色名/用户名，返回详细信息）
+         * @param {string} text - 要检查的文本
+         * @returns {object} - { hasBadWord: boolean, message: string }
+         */
+        function checkNameForBadWords(text) {
+            if (!text || BAD_WORDS.length === 0) return { hasBadWord: false, message: '' };
+            for (let word of BAD_WORDS) {
+                if (text.includes(word)) {
+                    return { 
+                        hasBadWord: true, 
+                        message: '名称中包含不当内容："' + word + '"，请更换其他名称' 
+                    };
+                }
+            }
+            return { hasBadWord: false, message: '' };
+        }
+        
+        /**
+         * 从URL参数获取token
+         */
+        function getTokenFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlToken = urlParams.get('token');
+            const urlUsername = urlParams.get('username');
+
+            if (urlToken && urlToken !== 'undefined' && urlToken !== 'null') {
+                token = urlToken;
+                sessionStorage.setItem('game_token', urlToken);
+                localStorage.setItem('mk_token', urlToken);
+                console.log('[Chat] 从URL参数获取token成功:', urlToken.substring(0, 20) + '...');
+            }
+            if (urlUsername) {
+                myUsername = urlUsername;
+                sessionStorage.setItem('game_username', urlUsername);
+                localStorage.setItem('mk_username', urlUsername);
+                console.log('[Chat] 从URL参数获取用户名:', urlUsername);
+            }
+
+            return !!(urlToken && urlToken !== 'undefined' && urlToken !== 'null');
+        }
+        
+        /**
+         * 从游戏获取token（如果游戏已登录）
+         */
+        function getTokenFromGame() {
+            try {
+                // 1. 先尝试从URL参数获取（优先级最高）
+                if (getTokenFromURL()) {
+                    return true;
+                }
+                
+                // 2. 尝试从localStorage获取（持久化存储）
+                var localStorageToken = localStorage.getItem('mk_token');
+                var localStorageUsername = localStorage.getItem('mk_username');
+                if (localStorageToken && localStorageToken !== 'undefined' && localStorageToken !== 'null') {
+                    token = localStorageToken;
+                    myUsername = localStorageUsername || '';
+                    sessionStorage.setItem('game_token', token);
+                    sessionStorage.setItem('game_username', myUsername);
+                    console.log('[Chat] 从localStorage获取token成功:', token.substring(0, 20) + '...');
+                    return true;
+                }
+
+                // 3. 尝试从sessionStorage读取
+                var sessionToken = sessionStorage.getItem('game_token');
+                var sessionUsername = sessionStorage.getItem('game_username');
+                if (sessionToken && sessionToken !== 'undefined' && sessionToken !== 'null') {
+                    token = sessionToken;
+                    myUsername = sessionUsername || '';
+                    console.log('[Chat] 从sessionStorage获取token成功:', token.substring(0, 20) + '...');
+                    return true;
+                }
+                
+                // 4. 尝试从游戏对象获取token
+                if (typeof window.MonsterKingdomAPI !== 'undefined') {
+                    const api = window.MonsterKingdomAPI.getInstance();
+                    const gameToken = api.getToken();
+                    const gameUsername = api.getUsername();
+                    if (gameToken) {
+                        token = gameToken;
+                        myUsername = gameUsername;
+                        sessionStorage.setItem('game_token', token);
+                        sessionStorage.setItem('game_username', myUsername);
+                        console.log('[Chat] 从游戏对象获取token成功');
+                        return true;
+                    }
+                }
+                
+                // 5. 尝试从游戏变量直接读取
+                if (typeof Game !== 'undefined' && Game.player && Game.player.variable) {
+                    const gameToken = Game.player.variable.getString(14003);
+                    const gameUsername = Game.player.variable.getString(14004);
+                    if (gameToken && gameToken !== 'undefined' && gameToken !== 'null') {
+                        token = gameToken;
+                        myUsername = gameUsername || '';
+                        sessionStorage.setItem('game_token', token);
+                        sessionStorage.setItem('game_username', myUsername);
+                        console.log('[Chat] 从游戏变量获取token成功');
+                        return true;
+                    }
+                }
+                
+                // 6. 尝试从parent窗口获取
+                if (window.parent) {
+                    // 尝试从parent的MonsterKingdomAPI获取
+                    if (window.parent.MonsterKingdomAPI) {
+                        const api = window.parent.MonsterKingdomAPI.getInstance();
+                        const gameToken = api.getToken();
+                        const gameUsername = api.getUsername();
+                        if (gameToken) {
+                            token = gameToken;
+                            myUsername = gameUsername;
+                            sessionStorage.setItem('game_token', token);
+                            sessionStorage.setItem('game_username', myUsername);
+                            console.log('[Chat] 从父窗口获取token成功');
+                            return true;
+                        }
+                    }
+                    
+                    // 尝试从parent的游戏变量获取
+                    if (window.parent.Game && window.parent.Game.player && window.parent.Game.player.variable) {
+                        const gameToken = window.parent.Game.player.variable.getString(14003);
+                        const gameUsername = window.parent.Game.player.variable.getString(14004);
+                        if (gameToken && gameToken !== 'undefined' && gameToken !== 'null') {
+                            token = gameToken;
+                            myUsername = gameUsername || '';
+                            sessionStorage.setItem('game_token', token);
+                            sessionStorage.setItem('game_username', myUsername);
+                            console.log('[Chat] 从父窗口游戏变量获取token成功');
+                            return true;
+                        }
+                    }
+                }
+                
+                console.log('[Chat] 无法获取token，请先登录');
+                return false;
+            } catch (error) {
+                console.error('[Chat] 获取token失败:', error);
+                return false;
+            }
+        }
+        
+        /**
+         * 获取角色名（优先从localStorage，其次从游戏变量，最后用账号名）
+         */
+        function getCharacterName() {
+            try {
+                // 1. 从localStorage获取（由MonsterKingdomAPI或index.html保存）
+                var storedName = localStorage.getItem('mk_charactername');
+                if (storedName && storedName !== 'undefined' && storedName !== 'null') return storedName;
+
+                // 2. 从MonsterKingdomAPI获取
+                if (typeof window.MonsterKingdomAPI !== 'undefined') {
+                    var api = MonsterKingdomAPI.getInstance();
+                    var name = api.getGameVariable(14002);
+                    if (name && name !== 'undefined' && name !== 'null') return name;
+                }
+                // 3. 从游戏变量直接获取
+                var Game = window.Game || (window.parent && window.parent.Game);
+                if (Game && Game.player && Game.player.variable) {
+                    var name = Game.player.variable.getString(14002);
+                    if (name && name !== 'undefined' && name !== 'null') return name;
+                }
+            } catch (e) {}
+            return myUsername; // fallback to account name
+        }
+
+        /**
+         * Token过期处理 - 清除登录状态，显示登录界面
+         */
+        function handleTokenExpired() {
+            var expiredToken = token;
+            token = '';
+            myUsername = '';
+            sessionStorage.removeItem('game_token');
+            sessionStorage.removeItem('game_username');
+            localStorage.removeItem('mk_token');
+            localStorage.removeItem('mk_username');
+
+            var loginPanel = document.getElementById('loginPanel');
+            var registerPanel = document.getElementById('registerPanel');
+            var chatContainer = document.getElementById('chatContainer');
+
+            if (loginPanel) loginPanel.style.display = 'block';
+            if (registerPanel) registerPanel.style.display = 'none';
+            if (chatContainer) { chatContainer.style.display = 'none'; }
+
+            // 尝试通知服务器token已失效（不阻塞）
+            if (expiredToken) {
+                fetch(API_URL + '?action=logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: expiredToken })
+                }).catch(function(){});
+            }
+
+            console.log('[Chat] Token已失效，已重置登录状态');
+        }
+        
+        async function api(action, data = {}) {
+            try {
+                console.log('[API] 调用: ' + action + ', 参数:', data);
+
+                // 自动携带token和username
+                if (token) {
+                    data.token = token;
+                }
+                if (myUsername) {
+                    data.username = myUsername;
+                }
+                const response = await fetch(API_URL + '?action=' + action, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                console.log('[API] 响应状态: ' + response.status);
+
+                if (!response.ok) {
+                    var text = await response.text();
+                    console.error('[API] 响应错误: ' + response.status + ' - ' + text);
+                    return { code: response.status, message: '服务器错误: ' + text };
+                }
+
+                var result = await response.json();
+                console.log('[API] 响应数据:', result);
+
+                // 检测token失效，自动跳转登录界面
+                if (result.code === 401 || (result.message && (result.message.indexOf('token') !== -1 || result.message.indexOf('登录') !== -1 || result.message.indexOf('过期') !== -1))) {
+                    handleTokenExpired();
+                    return result;
+                }
+
+                return result;
+            } catch (error) {
+                console.error('[API] 网络错误:', error);
+                return { code: 500, message: '网络错误: ' + error.message };
+            }
+        }
+        
+        async function updateUserStatus() {
+            await api('updateUserStatus', { username: myUsername });
+        }
+        
+        async function loadUsers() {
+            const result = await api('getChatUsers');
+            const userList = document.getElementById('userList');
+            const onlineCount = document.getElementById('onlineCount');
+            
+            if (result.code !== 200 || !result.data) {
+                userList.innerHTML = '<div class="loading">' + (result.message || '加载失败') + '</div>';
+                return;
+            }
+            
+            const users = result.data.users || result.data;
+            const virtualEnabled = result.data.virtualEnabled || false;
+            const virtualMin = result.data.virtualMin || 0;
+            const virtualMax = result.data.virtualMax || 0;
+            
+            let displayCount = users.filter(u => u.online && u.username !== myUsername).length;
+            
+            // 如果启用虚拟在线，随机生成显示人数
+            if (virtualEnabled && virtualMax >= virtualMin) {
+                displayCount = Math.floor(Math.random() * (virtualMax - virtualMin + 1)) + virtualMin;
+            }
+            
+            onlineCount.textContent = displayCount;
+            
+            if (users.length === 0) {
+                userList.innerHTML = '<div class="loading">暂无用户</div>';
+                return;
+            }
+            
+            let html = '';
+            users.forEach(user => {
+                if (user.username === myUsername) return;
+                
+                html += `
+                    <div class="user-item ${currentUserName === user.username ? 'active' : ''}" data-username="${user.username}">
+                        <div class="user-avatar">
+                            ${user.avatar || user.username.substring(0, 1)}
+                            <div class="user-status ${user.online ? '' : 'offline'}"></div>
+                        </div>
+                        <div class="user-info">
+                            <div class="user-name">${user.username}</div>
+                            <div class="user-level">${user.online ? '在线' : '离线'}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            userList.innerHTML = html || '<div class="loading">暂无其他用户</div>';
+            
+            document.querySelectorAll('.user-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const username = item.dataset.username;
+                    selectUser(username);
+                });
+            });
+        }
+        
+        async function selectUser(username) {
+            closeUserList();
+            currentUserName = username;
+            currentTab = 'private';
+            
+            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+            document.querySelector('[data-tab="private"]').classList.add('active');
+            
+            document.querySelectorAll('.user-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.username === username);
+            });
+            
+            const chatHeader = document.getElementById('chatHeader');
+            chatHeader.innerHTML = `
+                <div class="chat-avatar">${username.substring(0, 1)}</div>
+                <div class="chat-title">
+                    <div class="chat-name">${username}</div>
+                    <div class="chat-status">私聊中</div>
+                </div>
+            `;
+            
+            document.getElementById('inputArea').style.display = 'flex';
+            
+            await loadMessages();
+        }
+        
+        async function selectPublic() {
+            closeUserList();
+            currentTab = 'public';
+            currentUserName = null;
+            
+            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+            document.querySelector('.tab-item[data-tab="public"]').classList.add('active');
+            
+            document.querySelectorAll('.user-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const chatHeader = document.getElementById('chatHeader');
+            chatHeader.innerHTML = `
+                <div class="chat-avatar">世</div>
+                <div class="chat-title">
+                    <div class="chat-name">世界频道</div>
+                    <div class="chat-status">广播消息</div>
+                </div>
+            `;
+            
+            document.getElementById('inputArea').style.display = 'flex';
+            
+            await loadPublicMessages();
+        }
+        
+        var _lastMessagesHtml = '';
+        function updateMessagesContainer(container, html) {
+            if (container.innerHTML !== html) {
+                container.innerHTML = html;
+                container.scrollTop = container.scrollHeight;
+                _lastMessagesHtml = html;
+            }
+        }
+
+        async function loadMessages() {
+            const messagesContainer = document.getElementById('messages');
+
+            if (!currentUserName) {
+                updateMessagesContainer(messagesContainer, '<div class="empty-state"><div class="empty-icon">💬</div><div class="empty-text">选择一个玩家开始聊天</div></div>');
+                return;
+            }
+
+            const result = await api('getPrivateMessages', { from_user: myUsername, to_user: currentUserName });
+
+            if (result.code !== 200 || !result.data) {
+                updateMessagesContainer(messagesContainer, '<div class="empty-state"><div class="empty-icon">❌</div><div class="empty-text">' + (result.message || '加载失败') + '</div></div>');
+                return;
+            }
+
+            const messages = result.data.filter(m =>
+                (m.from_user === currentUserName && m.to_user === myUsername) ||
+                (m.from_user === myUsername && m.to_user === currentUserName)
+            );
+
+            if (messages.length === 0) {
+                updateMessagesContainer(messagesContainer, '<div class="system-message">开始与 ' + currentUserName + ' 的私聊</div>');
+                return;
+            }
+
+            var html = '';
+            messages.forEach(function(msg) {
+                var isSelf = msg.from_user === myUsername;
+                var displayName = msg.character_name || msg.from_user;
+                html += '<div class="message ' + (isSelf ? 'self' : '') + '">' +
+                    '<div class="message-avatar">' + (isSelf ? '我' : displayName.substring(0, 1)) + '</div>' +
+                    '<div class="message-content">' +
+                    '<div class="message-name">' + (isSelf ? '我' : displayName) + '</div>' +
+                    '<div class="message-bubble">' + msg.content + '</div>' +
+                    '<div class="message-time">' + formatBeijingTime(msg.created_at) + '</div>' +
+                    '</div>' +
+                    '</div>';
+            });
+
+            updateMessagesContainer(messagesContainer, html);
+        }
+        
+        async function loadPublicMessages() {
+            const messagesContainer = document.getElementById('messages');
+
+            const result = await api('getPublicMessages');
+
+            if (result.code !== 200 || !result.data) {
+                updateMessagesContainer(messagesContainer, '<div class="empty-state"><div class="empty-icon">❌</div><div class="empty-text">' + (result.message || '加载失败') + '</div></div>');
+                return;
+            }
+
+            var messages = result.data;
+
+            if (messages.length === 0) {
+                updateMessagesContainer(messagesContainer, '<div class="system-message">世界频道空空如也，快来发言吧！</div>');
+                return;
+            }
+
+            var html = '';
+            messages.forEach(function(msg) {
+                var isSelf = msg.from_user === myUsername;
+                var displayName = msg.character_name || msg.from_user;
+                html += '<div class="message ' + (isSelf ? 'self' : '') + '">' +
+                    '<div class="message-avatar">' + (isSelf ? '我' : displayName.substring(0, 1)) + '</div>' +
+                    '<div class="message-content">' +
+                    '<div class="message-name">' + (isSelf ? '我' : displayName) + '</div>' +
+                    '<div class="message-bubble">' + msg.content + '</div>' +
+                    '<div class="message-time">' + formatBeijingTime(msg.created_at) + '</div>' +
+                    '</div>' +
+                    '</div>';
+            });
+
+            updateMessagesContainer(messagesContainer, html);
+        }
+        
+        async function sendMessage() {
+            const input = document.getElementById('messageInput');
+            let content = input.value.trim();
+            
+            if (!content) return;
+            
+            // 消息字数限制：最多50字
+            if (content.length > 50) {
+                alert('消息不能超过50个字');
+                return;
+            }
+            
+            // 违禁词检测与替换（聊天中出现违禁词替换为星号）
+            const cleanedContent = replaceBadWords(content);
+            if (cleanedContent !== content) {
+                // 提示用户消息已被过滤
+                console.log('[Chat] 消息包含违禁词，已自动过滤');
+            }
+            content = cleanedContent;
+            
+            let toUser = currentUserName;
+            if (currentTab === 'public') {
+                toUser = 'all';
+            }
+            if (!toUser && currentTab === 'private') {
+                alert('请先选择一个玩家');
+                return;
+            }
+            
+            const result = await api('sendMessage', {
+                from_user: myUsername,
+                to_user: toUser,
+                content: content,
+                character_name: getCharacterName()
+            });
+            
+            if (result.code === 200) {
+                input.value = '';
+                
+                // 立即更新活跃状态，防止token过期
+                updateUserStatus();
+                
+                // 刷新消息列表
+                if (currentTab === 'public') {
+                    loadPublicMessages();
+                } else {
+                    loadMessages();
+                }
+            } else {
+                alert('发送失败: ' + result.message);
+            }
+        }
+        
+        async function login() {
+            const usernameInput = document.getElementById('loginUsername');
+            const passwordInput = document.getElementById('loginPassword');
+            const errorDiv = document.getElementById('loginError');
+            
+            const username = usernameInput ? usernameInput.value.trim() : '';
+            const password = passwordInput ? passwordInput.value : '';
+            
+            // 前端验证
+            if (!username || !password) {
+                errorDiv.textContent = '请输入用户名和密码';
+                return;
+            }
+            
+            if (username.length > 12) {
+                errorDiv.textContent = '账号最长12位';
+                return;
+            }
+            
+            if (password.length > 15) {
+                errorDiv.textContent = '密码最长15位';
+                return;
+            }
+            
+            try {
+                errorDiv.textContent = '';
+                
+                const response = await fetch(API_URL + '?action=login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+                
+                if (!response.ok) {
+                    errorDiv.textContent = '服务器响应异常: ' + response.status;
+                    console.error('HTTP error:', response.status);
+                    return;
+                }
+                
+                const result = await response.json();
+                
+                if (result.code === 200) {
+                    // 兼容两种响应格式: data.token 或 data.user.token
+                    var userData = result.data || {};
+                    var userObj = userData.user || {};
+                    myUsername = userData.username || userObj.username || '';
+                    token = userData.token || userObj.token || '';
+                    // 同时保存到sessionStorage和localStorage，确保token持久化
+                    sessionStorage.setItem('game_token', token);
+                    sessionStorage.setItem('game_username', myUsername);
+                    localStorage.setItem('mk_token', token);
+                    localStorage.setItem('mk_username', myUsername);
+                    console.log('[Chat] 登录成功，已保存token到存储');
+                    showChat();
+                } else {
+                    errorDiv.textContent = result.message || '登录失败';
+                }
+            } catch (error) {
+                console.error('登录错误:', error);
+                if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                    errorDiv.textContent = '无法连接到服务器，请检查网络连接';
+                } else if (error.name === 'AbortError') {
+                    errorDiv.textContent = '请求超时，请重试';
+                } else {
+                    errorDiv.textContent = '网络错误: ' + error.message;
+                }
+            }
+        }
+        
+        async function register() {
+            const usernameInput = document.getElementById('regUsername');
+            const passwordInput = document.getElementById('regPassword');
+            const emailInput = document.getElementById('regEmail');
+            const errorDiv = document.getElementById('regError');
+            
+            const username = usernameInput ? usernameInput.value.trim() : '';
+            const password = passwordInput ? passwordInput.value : '';
+            const email = emailInput ? emailInput.value.trim() : '';
+            
+            // 前端验证
+            if (!username || !password) {
+                errorDiv.textContent = '请输入用户名和密码';
+                return;
+            }
+            
+            if (username.length > 12) {
+                errorDiv.textContent = '账号最长12位';
+                return;
+            }
+            
+            if (username.length < 3) {
+                errorDiv.textContent = '账号最短3位';
+                return;
+            }
+            
+            // 用户名违禁词检测（取名时出现违禁词警告并阻止）
+            const badWordCheck = checkNameForBadWords(username);
+            if (badWordCheck.hasBadWord) {
+                errorDiv.textContent = badWordCheck.message;
+                return;
+            }
+            
+            if (password.length > 15) {
+                errorDiv.textContent = '密码最长15位';
+                return;
+            }
+            
+            if (password.length < 6) {
+                errorDiv.textContent = '密码最短6位';
+                return;
+            }
+            
+            try {
+                errorDiv.textContent = '';
+                
+                const response = await fetch(API_URL + '?action=register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password,
+                        email: email
+                    })
+                });
+                
+                if (!response.ok) {
+                    errorDiv.textContent = '服务器响应异常: ' + response.status;
+                    console.error('HTTP error:', response.status);
+                    return;
+                }
+                
+                const result = await response.json();
+                
+                if (result.code === 200) {
+                    alert('注册成功，请登录');
+                    showLogin();
+                } else {
+                    errorDiv.textContent = result.message;
+                }
+            } catch (error) {
+                console.error('注册错误:', error);
+                if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
+                    errorDiv.textContent = '无法连接到服务器，请检查网络连接';
+                } else if (error.name === 'AbortError') {
+                    errorDiv.textContent = '请求超时，请重试';
+                } else {
+                    errorDiv.textContent = '注册失败: ' + error.message;
+                }
+            }
+        }
+        
+        function logout() {
+            // 先捕获当前token再清除
+            var currentToken = token;
+            var currentUsername = myUsername;
+
+            sessionStorage.removeItem('game_token');
+            sessionStorage.removeItem('game_username');
+            localStorage.removeItem('mk_token');
+            localStorage.removeItem('mk_username');
+            myUsername = '';
+            token = '';
+            document.getElementById('loginPanel').style.display = 'block';
+            document.getElementById('registerPanel').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'none';
+
+            // 使用捕获的token通知服务器（不阻塞）
+            if (currentToken) {
+                fetch(API_URL + '?action=logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: currentToken })
+                }).catch(function(){});
+            }
+            console.log('[Chat] 已退出登录，清除所有存储的token');
+        }
+        
+        function showLogin() {
+            document.getElementById('loginPanel').style.display = 'block';
+            document.getElementById('registerPanel').style.display = 'none';
+        }
+        
+        function showRegister() {
+            document.getElementById('loginPanel').style.display = 'none';
+            document.getElementById('registerPanel').style.display = 'block';
+        }
+        
+        function showChat() {
+            document.getElementById('loginPanel').style.display = 'none';
+            document.getElementById('registerPanel').style.display = 'none';
+            document.getElementById('chatContainer').style.display = 'flex';
+            document.getElementById('chatContainer').style.flexDirection = 'column';
+            // 显示角色名而非账号名
+            var charName = getCharacterName();
+            // 如果本地没有角色名，尝试从API获取
+            if (charName === myUsername && token) {
+                api('check').then(function(result) {
+                    if (result.code === 200 && result.data && result.data.character_name) {
+                        charName = result.data.character_name;
+                        localStorage.setItem('mk_charactername', charName);
+                        document.getElementById('usernameDisplay').textContent = charName;
+                    }
+                }).catch(function(){});
+            }
+            document.getElementById('usernameDisplay').textContent = charName;
+            updateUserStatus();
+            loadUsers();
+            loadNotices(); // 加载系统公告
+        }
+
+        // 加载系统公告
+        async function loadNotices() {
+            const result = await api('getSystemNotices');
+            const noticesContainer = document.getElementById('notices');
+            
+            if (result.code !== 200 || !result.data) {
+                noticesContainer.innerHTML = '';
+                return;
+            }
+
+            const notices = result.data || [];
+            if (notices.length === 0) {
+                noticesContainer.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            notices.forEach(notice => {
+                const type = notice.type === 'monster_defeat' ? 'defeat' : 'system';
+                let content = '';
+                if (notice.type === 'monster_defeat') {
+                    content = `<span style="color: #22c55e;">🎉 ${notice.player_name} 击败了 ${notice.monster_name}！</span>`;
+                } else {
+                    content = `<span style="color: ${notice.color || '#ff0000'};">📢 ${notice.content}</span>`;
+                }
+                html += `<div class="notice-item ${type}">${content}</div>`;
+            });
+            
+            noticesContainer.innerHTML = html;
+        }
+        
+        async function checkLogin() {
+            // 1. 从URL参数、localStorage、游戏对象等来源获取token
+            if (getTokenFromGame()) {
+                sessionStorage.setItem('game_token', token);
+                sessionStorage.setItem('game_username', myUsername);
+                // 验证token有效性
+                var result = await api('check');
+                if (result.code === 200) {
+                    showChat();
+                    return;
+                } else {
+                    // token无效，清除
+                    handleTokenExpired();
+                }
+            }
+
+            // 2. 尝试从sessionStorage获取已保存的登录信息
+            var savedToken = sessionStorage.getItem('game_token');
+            var savedUsername = sessionStorage.getItem('game_username');
+
+            if (savedToken && savedUsername) {
+                token = savedToken;
+                myUsername = savedUsername;
+                var result = await api('check');
+
+                if (result.code === 200) {
+                    showChat();
+                    return;
+                } else {
+                    token = '';
+                    myUsername = '';
+                    sessionStorage.removeItem('game_token');
+                    sessionStorage.removeItem('game_username');
+                }
+            }
+
+            // 3. 显示登录面板
+            document.getElementById('loginPanel').style.display = 'block';
+        }
+        
+        document.getElementById('sendBtn').addEventListener('click', sendMessage);
+        document.getElementById('messageInput').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.addEventListener('click', () => {
+                if (tab.dataset.tab === 'public') {
+                    selectPublic();
+                } else {
+                    // 切换到私聊标签
+                    currentTab = 'private';
+                    document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    if (currentUserName) {
+                        loadMessages();
+                    } else {
+                        // 没选择用户时，显示提示
+                        document.getElementById('chatHeader').innerHTML = `
+                            <div class="empty-state">
+                                <div class="empty-text">选择一个玩家开始私聊</div>
+                            </div>
+                        `;
+                        document.getElementById('inputArea').style.display = 'none';
+                    }
+                }
+            });
+        });
+        
+        // ============================================================
+        // 智能布局管理器 - 根据视口尺寸动态调整界面布局
+        // 替代固定媒体查询断点，实时计算最优布局方案
+        // ============================================================
+        (function() {
+            var LayoutManager = {
+                container: null,
+                sidebar: null,
+                init: function() {
+                    this.container = document.querySelector('.container');
+                    this.sidebar = document.getElementById('userListPanel');
+                    if (!this.container || !this.sidebar) {
+                        var self = this;
+                        setTimeout(function() { self.init(); }, 200);
+                        return;
+                    }
+                    this.checkLayout();
+                    var self = this;
+                    window.addEventListener('resize', function() { self.checkLayout(); });
+                    if (window.ResizeObserver) {
+                        new ResizeObserver(function() { self.checkLayout(); }).observe(document.documentElement);
+                    }
+                },
+                // 动态检测视口宽度，决定侧边栏模式（内联/遮罩）
+                checkLayout: function() {
+                    if (!this.container) return;
+                    var vw = window.innerWidth;
+                    // 计算内联模式所需最小宽度：侧边栏 + 聊天区
+                    var sidebarW = Math.min(Math.max(180, vw * 0.20), 280);
+                    var needed = sidebarW + 320;
+                    if (vw < needed) {
+                        this.container.classList.add('layout-overlay');
+                    } else {
+                        this.container.classList.remove('layout-overlay');
+                        this.closeSidebar();
+                    }
+                    // 辅助布局类供CSS细粒度调优
+                    this.container.classList.remove('layout-compact', 'layout-narrow', 'layout-wide');
+                    if (vw < 480) this.container.classList.add('layout-compact');
+                    else if (vw < 900) this.container.classList.add('layout-narrow');
+                    else this.container.classList.add('layout-wide');
+                },
+                toggleSidebar: function() {
+                    if (this.sidebar) this.sidebar.classList.toggle('open');
+                    var overlay = document.getElementById('userListOverlay');
+                    if (overlay) overlay.classList.toggle('show');
+                },
+                closeSidebar: function() {
+                    if (this.sidebar) this.sidebar.classList.remove('open');
+                    var overlay = document.getElementById('userListOverlay');
+                    if (overlay) overlay.classList.remove('show');
+                }
+            };
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() { LayoutManager.init(); });
+            } else {
+                LayoutManager.init();
+            }
+            window.toggleUserList = function() { LayoutManager.toggleSidebar(); };
+            window.closeUserList = function() { LayoutManager.closeSidebar(); };
+        })();
+
+        // 初始化违禁词库
+        loadBadWords();
+        
+        checkLogin();
+
+        // 消息自动刷新（3秒间隔）
+        var messageRefreshTimer = setInterval(() => {
+            if (!myUsername) return;
+            // 只在页面可见时刷新，减少不必要的请求
+            if (document.hidden) return;
+
+            // 同时更新活跃状态，防止token过期
+            updateUserStatus();
+
+            if (currentTab === 'private' && currentUserName) {
+                loadMessages();
+            } else if (currentTab === 'public') {
+                loadPublicMessages();
+            }
+        }, 3000);
+
+        // 页面可见性变化时，如果变为可见则立即刷新
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden && myUsername) {
+                if (currentTab === 'private' && currentUserName) {
+                    loadMessages();
+                } else if (currentTab === 'public') {
+                    loadPublicMessages();
+                }
+                loadUsers();
+            }
+        });
+
+        // 监听来自游戏的消息，当存档读取完成时触发刷新
+        window.addEventListener('message', function(event) {
+            if (!myUsername) return;
+            
+            // 存档读取完成时刷新消息
+            if (event.data && event.data.type === 'SAVE_LOADED') {
+                console.log('[Chat] 收到存档读取完成通知，刷新消息');
+                if (currentTab === 'private' && currentUserName) {
+                    loadMessages();
+                } else if (currentTab === 'public') {
+                    loadPublicMessages();
+                }
+                loadUsers();
+            }
+            
+            // 游戏数据更新时刷新（用于排行榜联动）
+            if (event.data && event.data.type === 'GAME_STATS_UPDATE') {
+                console.log('[Chat] 收到游戏数据更新通知');
+                // 可以在这里添加其他逻辑
+            }
+        });
+
+        // 公开刷新函数，供游戏直接调用
+        window.refreshChat = function() {
+            if (!myUsername) return;
+            console.log('[Chat] 收到外部刷新请求');
+            if (currentTab === 'private' && currentUserName) {
+                loadMessages();
+            } else if (currentTab === 'public') {
+                loadPublicMessages();
+            }
+            loadUsers();
+        };
+    </script>
+</body>
+</html>

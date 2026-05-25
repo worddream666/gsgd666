@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>重新登录 - 怪兽国度</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Microsoft YaHei','PingFang SC',sans-serif;
+    background:#0a0a12 url('reconnect-bj.png') center/cover no-repeat;
+    width:100vw;height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+}
+.container{
+    width:100%;max-width:600px;padding:24px;
+    text-align:center;
+}
+.icon{
+    width:64px;height:64px;margin:0 auto 16px;
+    background:linear-gradient(135deg,#4a1a8a,#1a3a7a);
+    border-radius:16px;display:flex;align-items:center;justify-content:center;
+    font-size:30px;color:#fff;
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow:0 10px 40px rgba(74,26,138,0.15);
+}
+.title{font-size:22px;font-weight:700;color:#e8e0f0;letter-spacing:2px;margin-bottom:6px}
+.subtitle{font-size:14px;color:rgba(200,180,220,0.45);margin-bottom:20px;letter-spacing:2px}
+.card{
+    background:rgba(20,16,32,0.75);border:1px solid rgba(100,80,160,0.15);
+    border-radius:16px;padding:24px 22px 20px;text-align:left;
+}
+.tab-bar{display:flex;gap:0;margin-bottom:20px;background:rgba(255,255,255,0.03);border-radius:10px;padding:3px}
+.tab-bar button{
+    flex:1;padding:10px;border:none;background:none;color:rgba(200,180,220,0.35);
+    font-size:14px;font-weight:600;cursor:pointer;border-radius:8px;transition:all 0.3s;font-family:inherit
+}
+.tab-bar button.active{background:rgba(100,60,200,0.18);color:#c8b0e8}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:12px;color:rgba(200,180,220,0.4);margin-bottom:4px;letter-spacing:1px}
+.form-group input{
+    width:100%;padding:11px 13px;border-radius:8px;background:rgba(255,255,255,0.03);
+    border:1px solid rgba(100,80,160,0.12);color:#d0c8e0;font-size:14px;outline:none;
+    transition:all 0.3s;font-family:inherit
+}
+.form-group input:focus{border-color:rgba(100,60,200,0.3);background:rgba(255,255,255,0.06)}
+.form-group input::placeholder{color:rgba(200,180,220,0.2)}
+.submit-btn{
+    width:100%;padding:12px;border:none;border-radius:8px;
+    background:linear-gradient(135deg,#4a1a8a,#2a4aaa);color:#fff;
+    font-size:14px;font-weight:600;cursor:pointer;transition:all 0.3s;
+    font-family:inherit;letter-spacing:2px;margin-top:4px
+}
+.submit-btn:hover{opacity:0.9}
+.submit-btn:disabled{opacity:0.4;cursor:not-allowed}
+.form-panel{display:none}
+.form-panel.active{display:block}
+.msg{font-size:12px;margin-top:10px;min-height:20px;display:none;text-align:center}
+.msg.error{display:block;color:#f06060}
+.msg.success{display:block;color:#50c080}
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.15);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:4px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.overlay-bg{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.85);z-index:99998;display:flex;align-items:center;justify-content:center;
+}
+.disclaimer-card{
+    width:90%;max-width:460px;background:rgba(20,16,32,0.95);border:1px solid rgba(100,80,160,0.2);
+    border-radius:16px;padding:24px;text-align:left;max-height:80vh;overflow-y:auto;
+}
+.disclaimer-title{
+    font-size:18px;font-weight:700;color:#e8e0f0;text-align:center;margin-bottom:16px;letter-spacing:1px
+}
+.disclaimer-content{
+    font-size:13px;color:rgba(200,180,220,0.75);line-height:1.8;margin-bottom:20px;
+}
+.disclaimer-content h4{color:#c8b0e8;font-size:14px;margin:12px 0 6px}
+.disclaimer-content p{margin:6px 0}
+.disclaimer-footer{
+    display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.countdown-text{
+    font-size:14px;color:rgba(200,180,220,0.6)
+}
+.countdown-num{
+    color:#ff6060;font-weight:700;font-size:18px
+}
+.confirm-btn{
+    width:100%;padding:14px;border:none;border-radius:8px;
+    background:linear-gradient(135deg,#3a5a2a,#2a4a2a);color:#fff;
+    font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:2px;
+    transition:all 0.3s;
+}
+.confirm-btn:disabled{background:rgba(60,60,60,0.5);color:rgba(200,180,220,0.3);cursor:not-allowed}
+.confirm-btn:not(:disabled):hover{opacity:0.9}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="icon">&#9881;</div>
+    <div class="title">月咏大陆与您失联了</div>
+    <div class="subtitle" id="reconnectSubtitle">小猎人请重新登录</div>
+    <div class="card">
+        <div class="tab-bar">
+            <button id="tabLogin" class="active" onclick="switchTab('login')">登录</button>
+            <button id="tabReg" onclick="switchTab('reg')">注册</button>
+        </div>
+
+        <!-- 登录面板 -->
+        <div id="loginPanel" class="form-panel active">
+            <div class="form-group">
+                <label>账号</label>
+                <input id="loginUser" type="text" placeholder="请输入用户名" maxlength="20" />
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input id="loginPass" type="password" placeholder="请输入密码" maxlength="32" />
+            </div>
+            <button id="loginBtn" class="submit-btn" onclick="handleLogin()">登录</button>
+            <div id="loginMsg" class="msg"></div>
+        </div>
+
+        <!-- 注册面板 -->
+        <div id="regPanel" class="form-panel">
+            <div class="form-group">
+                <label>账号</label>
+                <input id="regUser" type="text" placeholder="请输入用户名" maxlength="20" />
+            </div>
+            <div class="form-group">
+                <label>密码</label>
+                <input id="regPass" type="password" placeholder="至少6个字符" maxlength="32" />
+            </div>
+            <div class="form-group">
+                <label>确认密码</label>
+                <input id="regConfirm" type="password" placeholder="再次输入密码" maxlength="32" />
+            </div>
+            <button id="regBtn" class="submit-btn" onclick="handleRegister()">注册并登录</button>
+            <div id="regMsg" class="msg"></div>
+        </div>
+    </div>
+</div>
+
+<div id="disclaimerOverlay" class="overlay-bg">
+    <div class="disclaimer-card">
+        <div class="disclaimer-title">⚠️ 重要声明 · 请仔细阅读</div>
+        <div class="disclaimer-content">
+            <h4>一、游戏本体声明</h4>
+            <p>⚠️ <strong style="color:#ff6060">游戏本体内容全程本地存储</strong>，所有游戏存档数据仅保存在您的浏览器本地存储中。</p>
+            <p>清除浏览器数据将导致游戏存档<strong style="color:#ff6060">永久丢失</strong>，请勿随意清理浏览器缓存！</p>
+
+            <h4>二、账号登录说明</h4>
+            <p>账号登录功能<strong style="color:#ff6060">仅用于</strong>以下联网功能测试：</p>
+            <p>· 聊天功能测试<br/>· 排行榜功能测试</p>
+            <p>账号登录<strong style="color:#ff6060">不参与</strong>游戏本体存档，登录与否<strong style="color:#ff6060">完全不影响</strong>您的本地存档！</p>
+
+            <h4>三、数据安全提示</h4>
+            <p>· 游戏存档100%存储在本地，与服务器无关</p>
+            <p>· 切换浏览器或设备将无法继承原有存档</p>
+            <p>· 存档损坏或丢失与游戏官方无关</p>
+
+            <h4>四、免责声明</h4>
+            <p>· 因玩家自行删除浏览器数据、设备故障、误操作等导致的存档丢失，游戏官方不承担任何责任</p>
+            <p>· 玩家应自行承担存档风险</p>
+            <p>· 本游戏保留随时修改本声明的权利</p>
+
+            <h4>五、重要提醒</h4>
+            <p>⚠️ 请务必了解：<strong style="color:#ff6060">您的游戏进度完全存储在本地设备中</strong>，服务器仅用于登录账号和排行榜功能！</p>
+        </div>
+        <div class="disclaimer-footer">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;color:rgba(200,180,220,0.8);">
+                <input type="checkbox" id="disclaimerCheckbox" onchange="handleCheckboxChange()" style="width:18px;height:18px;cursor:pointer;accent-color:#4ade80;" />
+                <span>我已详细确认并了解上述声明内容</span>
+            </label>
+            <button id="confirmBtn" class="confirm-btn" onclick="handleDisclaimerConfirm()" disabled>请先勾选上方确认框</button>
+        </div>
+    </div>
+</div>
+
+<script>
+var API_BASE = window.location.origin + '/fwq/api.php';
+var urlParams = new URLSearchParams(window.location.search);
+var currentChar = urlParams.get('char') || '';
+var disclaimerConfirmed = false;
+var countdownInterval = null;
+
+function $(id) { return document.getElementById(id); }
+
+function handleCheckboxChange() {
+    var checkbox = $('disclaimerCheckbox');
+    var btn = $('confirmBtn');
+    if (checkbox && checkbox.checked) {
+        disclaimerConfirmed = true;
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '✓ 我已详细确认并了解上述声明内容';
+        }
+    } else {
+        disclaimerConfirmed = false;
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '请先勾选上方确认框';
+        }
+    }
+}
+
+function handleDisclaimerConfirm() {
+    if (!disclaimerConfirmed) return;
+    var overlay = $('disclaimerOverlay');
+    if (overlay) overlay.style.display = 'none';
+}
+
+function switchTab(tab) {
+    $('tabLogin').className = tab === 'login' ? 'active' : '';
+    $('tabReg').className = tab === 'reg' ? 'active' : '';
+    $('loginPanel').className = 'form-panel' + (tab === 'login' ? ' active' : '');
+    $('regPanel').className = 'form-panel' + (tab === 'reg' ? ' active' : '');
+    $('loginMsg').className = 'msg';
+    $('regMsg').className = 'msg';
+}
+
+function showMsg(el, text, type) {
+    el.textContent = text;
+    el.className = 'msg ' + (type || '');
+}
+
+function setLoading(btnId, loading, text) {
+    var btn = $(btnId);
+    btn.disabled = loading;
+    btn.innerHTML = loading ? '<span class="spinner"></span>' + (text || '处理中...') : (text || '登录');
+}
+
+function sendReconnect(token, username, characterName, hasCharacter) {
+    parent.postMessage({
+        type: 'mk_reconnected',
+        token: token,
+        username: username,
+        characterName: characterName || '',
+        hasCharacter: hasCharacter || false
+    }, '*');
+}
+
+function handleLogin() {
+    if (!disclaimerConfirmed) {
+        alert('请先阅读并同意声明条款');
+        return;
+    }
+    var username = $('loginUser').value.trim();
+    var password = $('loginPass').value.trim();
+    var msgEl = $('loginMsg');
+    showMsg(msgEl, '', '');
+    if (!username) { showMsg(msgEl, '请输入用户名', 'error'); return; }
+    if (!password) { showMsg(msgEl, '请输入密码', 'error'); return; }
+
+    setLoading('loginBtn', true, '登录');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', API_BASE + '?action=login', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState !== 4) return;
+        setLoading('loginBtn', false, '登录');
+        if (xhr.status !== 200) { showMsg(msgEl, '无法连接服务器', 'error'); return; }
+        try {
+            var result = JSON.parse(xhr.responseText);
+            if (result && result.code === 200 && result.data && result.data.user) {
+                var user = result.data.user;
+                showMsg(msgEl, '登录成功，正在返回游戏...', 'success');
+                // 检查是否有角色信息
+                var hasCharacter = result.data.hasCharacter || false;
+                var charName = result.data.characterName || currentChar || '';
+                sendReconnect(user.token, user.username, charName, hasCharacter);
+            } else {
+                showMsg(msgEl, (result && result.message) || '登录失败', 'error');
+            }
+        } catch(e) {
+            showMsg(msgEl, '服务器响应异常', 'error');
+        }
+    };
+    xhr.onerror = function() { setLoading('loginBtn', false, '登录'); showMsg(msgEl, '无法连接服务器', 'error'); };
+    xhr.send(JSON.stringify({ username: username, password: password }));
+}
+
+function handleRegister() {
+    if (!disclaimerConfirmed) {
+        alert('请先阅读并同意声明条款');
+        return;
+    }
+    var username = $('regUser').value.trim();
+    var password = $('regPass').value.trim();
+    var confirm = $('regConfirm').value.trim();
+    var msgEl = $('regMsg');
+    showMsg(msgEl, '', '');
+    if (!username) { showMsg(msgEl, '请输入用户名', 'error'); return; }
+    if (username.length < 2) { showMsg(msgEl, '用户名至少2个字符', 'error'); return; }
+    if (!password) { showMsg(msgEl, '请输入密码', 'error'); return; }
+    if (password.length < 6) { showMsg(msgEl, '密码至少6个字符', 'error'); return; }
+    if (password !== confirm) { showMsg(msgEl, '两次密码不一致', 'error'); return; }
+
+    setLoading('regBtn', true, '注册');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', API_BASE + '?action=register', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState !== 4) return;
+        setLoading('regBtn', false, '注册');
+        if (xhr.status !== 200) { showMsg(msgEl, '无法连接服务器', 'error'); return; }
+        try {
+            var result = JSON.parse(xhr.responseText);
+            if (result && result.code === 200 && result.data && result.data.user) {
+                showMsg(msgEl, '注册成功，正在返回游戏...', 'success');
+                sendReconnect(result.data.user.token, result.data.user.username);
+            } else {
+                showMsg(msgEl, (result && result.message) || '注册失败', 'error');
+            }
+        } catch(e) {
+            showMsg(msgEl, '服务器响应异常', 'error');
+        }
+    };
+    xhr.onerror = function() { setLoading('regBtn', false, '注册'); showMsg(msgEl, '无法连接服务器', 'error'); };
+    xhr.send(JSON.stringify({ username: username, password: password }));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (currentChar) {
+        document.getElementById('reconnectSubtitle').textContent = '角色「' + currentChar + '」的小猎人请重新登录';
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    if (!disclaimerConfirmed) return;
+    if ($('loginPanel').className.indexOf('active') >= 0) {
+        handleLogin();
+    } else {
+        handleRegister();
+    }
+});
+</script>
+</body>
+</html>

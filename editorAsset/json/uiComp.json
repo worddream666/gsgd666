@@ -1,0 +1,4248 @@
+[
+    {
+        "class": "UIRoot",
+        "icon": "editorAsset/img/UIIcon/c_box.png",
+        "name": "[#GAME_CONTAINER]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "enabledLimitView",
+                "name": "[#GAME_LIMITS_ARE_DISPLAYED_WITHIN_THE_ZONE]",
+                "tips": "[#GAME_WHETHER_A_CHILD_OBJECT_IS_DISPLAYED_IN_A_RESTRICTED]",
+                "compParam": {},
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "scrollShowType",
+                "name": "[#GAME_THE_SCROLL_BAR_DISPLAYS_THE_STATUS]",
+                "tips": "[#GAME_THE_SCROLL_BAR_DISPLAYS_THE_STATUS]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_DON'T_SHOW],[#GAME_ACCORDING_TO],[#GAME_AUTOMATIC_DISPLAY],[#GAME_SHOW_VERTICAL_SCROLL_BAR_ONLY],[#GAME_SHOW_HORIZONTAL_SCROLL_BAR_ONLY]"
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "hScrollBar",
+                "name": "[#GAME_HORIZONTAL_SCROLL_BAR_SLIDER_SKIN]",
+                "tips": "[#GAME_HORIZONTAL_SCROLL_BAR_SLIDER_SKIN]",
+                "compType": 13,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "hScrollBg",
+                "name": "[#GAME_HORIZONTAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "tips": "[#GAME_HORIZONTAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "compType": 13,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "vScrollBar",
+                "name": "[#GAME_VERTICAL_SCROLL_BAR_SLIDER_SKIN]",
+                "tips": "[#GAME_VERTICAL_SCROLL_BAR_SLIDER_SKIN]",
+                "compType": 13,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "vScrollBg",
+                "name": "[#GAME_VERTICAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "tips": "[#GAME_VERTICAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "compType": 13,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "scrollWidth",
+                "name": "[#GAME_SCROLLBAR_WIDTH]",
+                "tips": "[#GAME_SCROLLBAR_WIDTH]",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true,
+                    "lockTextLimit": true,
+                    "limitInteger": true
+                }
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THIS_EFFECT_IS_ENABLED_ONLY_ON_MOBILE_DEVICES],[#GAME_ALWAYS_ENABLE_THIS_EFFECT],[#GAME_THERE_IS_NO]"
+                },
+                "enable": true,
+                "attribute": "slowmotionType",
+                "name": "[#GAME_SLIDE_THE_CONTENT_AREA_TO_SCROLL]",
+                "tips": "[#GAME_USE_THE_MOUSE_OR_HAND_TO_SLIDE_THE_AREA]",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "enabledWheel",
+                "name": "[#GAME_SUPPORT_ROLLER_SCROLLING]",
+                "tips": "[#GAME_SUPPORT_WHEEL_SCROLLING_(IF_YOU_RESTRICT_THE_DISPLAY_IN]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 100,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "hScrollValue",
+                "name": "[#GAME_SCROLL_HORIZONTALLY]",
+                "tips": "[#GAME_SETS_THE_HORIZONTAL_SCROLLING_POSITION_OF_THE_CONTAINER]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 100,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "vScrollValue",
+                "name": "[#GAME_VERTICAL_SCROLLING_VALUE]",
+                "tips": "[#GAME_SETS_THE_SCROLLING_POSITION_OF_THE_VERTICAL_CONTAINER]",
+                "compType": 0
+            },
+            {
+                "enable": false,
+                "attribute": "guiID",
+                "name": "[#GAME_THE_CONTROL_ID]",
+                "tips": "[#GAME_INTERFACE_ID]",
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            }
+        ],
+        "tips": "[#GAME_CONTAINER_COMPONENTS]"
+    },
+    {
+        "id": 1,
+        "class": "UIButton",
+        "icon": "editorAsset/img/UIIcon/c_btn.png",
+        "name": "[#GAME_BUTTON]",
+        "attributes": [
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "label",
+                "name": "[#GAME_THE_TEXT_CONTENT]",
+                "tips": "[#GAME_BUTTON_TEXT_CONTENT]",
+                "compType": 9
+            },
+            {
+                "enable": true,
+                "attribute": "image1",
+                "name": "[#GAME_NORMAL_PICTURE]",
+                "tips": "[#GAME_PICTURE_IN_NORMAL_STATE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img1",
+                "name": "[#GAME_NORMAL_STATE_PICTURE_NINE_SQUARES]",
+                "tips": "[#GAME_UNDER_NORMAL_CONDITION_THE_PICTURE_IS_IN_NINE_GRIDS]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "image2",
+                "name": "[#GAME_HOVER_OVER_THE_PICTURE]",
+                "tips": "[#GAME_MOUSE_OVER_PICTURES]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img2",
+                "name": "[#GAME_HOVER_THE_MOUSE_OVER_THE_PICTURE_SUDOKU]",
+                "tips": "[#GAME_IMAGE_NINE_GRID_(FORMAT:_TOP_MARGIN_RIGHT_MARGIN,_BOTTOM]",
+                "compType": 28
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "image3",
+                "name": "[#GAME_MOUSE_CLICK_ON_PICTURE]",
+                "tips": "[#GAME_MOUSE_CLICK_PICTURE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img3",
+                "name": "[#GAME_CLICK_THE_MOUSE_PICTURE_NINE_GRID]",
+                "tips": "[#GAME_CLICK_THE_MOUSE_WHEN_THE_PICTURE_NINE_GRID_(FORMAT]",
+                "compType": 28
+            },
+            {
+                "compParam": {
+                    "minLimit": 12,
+                    "maxLimit": 50,
+                    "tickValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_TEXT_FONT_SIZE]",
+                "tips": "[#GAME_BUTTON_TEXT_FONT_SIZE]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_DEFAULT_TEXT_COLOR]",
+                "tips": "[#GAME_BUTTON_TEXT_FONT_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "overColor",
+                "name": "[#GAME_HOVER_OVER_THE_TEXT_COLOR]",
+                "tips": "",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "clickColor",
+                "name": "[#GAME_MOUSE_CLICK_ON_THE_TEXT_COLOR]",
+                "tips": "",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_TEXT_IN_BOLD]",
+                "tips": "[#GAME_WHETHER_THE_BUTTON_TEXT_IS_IN_BOLD]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_THE_TEXT_ITALIC]",
+                "tips": "[#GAME_WHETHER_THE_BUTTON_TEXT_IS_ITALIC]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_THE_TEXT_IS_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_TEXT_ALIGNMENT]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_OF_BUTTON_TEXT]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                },
+                "enable": true,
+                "attribute": "valign",
+                "name": "[#GAME_VERTICAL_TEXT_ALIGNMENT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_OF_BUTTON_TEXT]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "letterSpacing",
+                "name": "[#GAME_TEXT_WORD_SPACING]",
+                "tips": "[#GAME_TEXT_FONT_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_THE_TEXT_FONT]",
+                "tips": "[#GAME_BUTTON_TEXT_FONT_FORMAT]",
+                "compType": 9
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "textDx",
+                "name": "[#GAME_TEXT_HORIZONTAL_MIGRATION]",
+                "tips": "[#GAME_HORIZONTAL_OFFSET_OF_BUTTON_TEXT]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "textDy",
+                "name": "[#GAME_TEXT_VERTICAL_OFFSET]",
+                "tips": "[#GAME_THE_BUTTON_TEXT_IS_OFFSET_VERTICALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "textStroke",
+                "name": "[#GAME_TEXT_STROKE_SIZE]",
+                "tips": "[#GAME_THE_TEXT_STROKE_EFFECT_OF_THE_BUTTON]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "textStrokeColor",
+                "name": "[#GAME_TEXT_STROKE_COLOR]",
+                "tips": "[#GAME_THE_TEXT_STROKE_COLOR_OF_THE_BUTTON]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Skin",
+                "name": "grid9img1Skin",
+                "tips": "",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Skin",
+                "name": "grid9img2Skin",
+                "tips": "",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img3Skin",
+                "name": "grid9img3Skin",
+                "tips": "",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Width",
+                "name": "grid9img1Width",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Height",
+                "name": "grid9img1Height",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Width",
+                "name": "grid9img2Width",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Height",
+                "name": "grid9img2Height",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img3Width",
+                "name": "grid9img3Width",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img3Height",
+                "name": "grid9img3Height",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            }
+        ],
+        "tips": "[#GAME_BUTTON_COMPONENT]"
+    },
+    {
+        "id": 2,
+        "class": "UIBitmap",
+        "icon": "editorAsset/img/UIIcon/c_pic.png",
+        "name": "[#GAME_THE_PICTURE_NAME]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "image",
+                "name": "[#GAME_IMAGE_PATH]",
+                "tips": "[#GAME_THE_IMAGE_SKIN_PATH_IF_VARIABLE_IS_USED,_DISPLAYS]",
+                "compType": 14
+            },
+            {
+                "enable": true,
+                "attribute": "grid9",
+                "name": "[#GAME_SCRATCHABLE_LATEX]",
+                "tips": "[#GAME_9_GRID_FORMAT_TOP_MARGIN_RIGHT_MARGIN_BOTTOM_MARGIN]",
+                "compParam": {},
+                "compType": 28
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "flip",
+                "name": "[#GAME_FLIP_HORIZONTAL]",
+                "tips": "[#GAME_HORIZONTAL_REVERSAL]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "isTile",
+                "name": "[#GAME_TILE]",
+                "tips": "",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THE_UPPER_LEFT_CORNER],[#GAME_CENTER]"
+                },
+                "enable": true,
+                "attribute": "pivotType",
+                "name": "[#GAME_THE_PIVOT_POINT]",
+                "tips": "[#GAME_PIVOT_POINT_(AFFECTING_IMAGE_ROTATION_SCALING)]",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "isAdaptiveSize",
+                "name": "[#GAME_GAMECREATOR_ADAPTIVE_SIZE]",
+                "tips": "[#GAME_GAMECREATOR_ADAPTIVE_SIZE_SHOW]",
+                "compType": 15
+            }
+        ],
+        "tips": "[#GAME_IMAGE_COMPONENTS]"
+    },
+    {
+        "class": "UIString",
+        "icon": "editorAsset/img/UIIcon/c_txt.png",
+        "name": "[#GAME_THE_TEXT_NAME]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "text",
+                "name": "[#GAME_THE_TEXT_CONTENT]",
+                "tips": "[#GAME_TEXT_CONTENT_WHICH_DISPLAYS_TEXT_BASED_ON_THE_CURRENT]",
+                "compType": 10,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_THE_FONT_SIZE]",
+                "tips": "[#GAME_TEXT_FONT_SIZE]",
+                "compType": 1,
+                "compParam": {
+                    "minLimit": "12",
+                    "maxLimit": "50",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_THE_FONT_COLOR]",
+                "tips": "[#GAME_TEXT_FONT_COLOR]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_BOLD]",
+                "tips": "[#GAME_WHETHER_THE_TEXT_IS_IN_BOLD]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_ITALICS]",
+                "tips": "[#GAME_TEXT_WHETHER_THE_TEXT_IS_ITALIC]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_OF_TEXT_FONT]",
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "compType": 2
+            },
+            {
+                "enable": true,
+                "attribute": "valign",
+                "name": "[#GAME_VERTICAL_ALIGNMENT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_OF_TEXT_FONT]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "leading",
+                "name": "[#GAME_LINE_SPACING]",
+                "tips": "[#GAME_LINE_SPACING_OF_TEXT_FONT]",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "letterSpacing",
+                "name": "[#GAME_SPACE_BETWEEN_WORDS]",
+                "tips": "[#GAME_TEXT_FONT_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_THE_FONT]",
+                "tips": "[#GAME_TEXT_FONT_FORMAT]",
+                "compType": 9,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "wordWrap",
+                "name": "[#GAME_WORD_WRAP]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "overflow",
+                "name": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_ACCORDING_TO],[#GAME_HIDE]"
+                }
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowEnabled",
+                "name": "[#GAME_ACCORDING_TO_THE_SHADOW]",
+                "tips": "[#GAME_WHETHER_TEXT_IS_SHADED]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowColor",
+                "name": "[#GAME_SHADOW_COLOR]",
+                "tips": "[#GAME_TEXT_SHADOW_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "shadowDx",
+                "name": "[#GAME_SHADOW_HORIZONTAL_MIGRATION]",
+                "tips": "[#GAME_THE_TEXT_SHADOW_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "shadowDy",
+                "name": "[#GAME_SHADOW_VERTICAL_MIGRATION]",
+                "tips": "[#GAME_THE_TEXT_SHADOW_IS_OFFSET_VERTICALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "stroke",
+                "name": "[#GAME_FONT_STROKE_SIZE]",
+                "tips": "[#GAME_STROKE_EFFECT_OF_FONT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "strokeColor",
+                "name": "[#GAME_FONT_STROKE_COLOR]",
+                "tips": "[#GAME_FONT_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESSING_WHEN_TEXT_CHANGES]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_CALLED_WHEN_THE_TEXT]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textWidth",
+                "name": "[#GAME_REAL_TEXT_WIDTH]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textHeight",
+                "name": "[#GAME_REAL_TEXT_HEIGHT]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textLength",
+                "name": "[#GAME_REAL_TEXT_LENGTH]",
+                "tips": "",
+                "compType": 0
+            }
+        ],
+        "tips": "[#GAME_TEXT_COMPONENT_N_SUPPORTS_BINDING_OF_STRING_VARIABLES_FOR]"
+    },
+    {
+        "class": "UIVariable",
+        "icon": "editorAsset/img/UIIcon/c_var.png",
+        "name": "[#GAME_NUMERICAL_VARIABLES_NAME]",
+        "attributes": [
+            {
+                "compParam": {
+                    "items": "[#GAME_NUMERICAL_VARIABLES],[#GAME_(2)_WEEKS_ORDERS][#GAME_NUMERICAL_VARIABLES]",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "varMode",
+                "name": "[#GAME_VARIABLE_MODE]",
+                "tips": "[#GAME_VARIABLE_MODE]",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "varID",
+                "name": "[#GAME_VALUE_DISPLAYED]",
+                "tips": "[#GAME_VARIABLE_ID_THAT_DISPLAYS_THE_CURRENT_VALUE_OF_THE]",
+                "compType": 6
+            },
+            {
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_THE_FONT_SIZE]",
+                "tips": "[#GAME_THE_FONT_SIZE]",
+                "compType": 1,
+                "compParam": {
+                    "minLimit": "12",
+                    "maxLimit": "50",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_THE_FONT_COLOR]",
+                "tips": "[#GAME_THE_FONT_COLOR]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_BOLD]",
+                "tips": "[#GAME_WHETHER_IN_BOLD]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_ITALICS]",
+                "tips": "[#GAME_WHETHER_IN_ITALICS]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "compType": 2
+            },
+            {
+                "enable": true,
+                "attribute": "valign",
+                "name": "[#GAME_VERTICAL_ALIGNMENT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_TYPE]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "leading",
+                "name": "[#GAME_LINE_SPACING]",
+                "tips": "[#GAME_LINE_SPACING]",
+                "compType": 0,
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 10,
+                    "tickValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "letterSpacing",
+                "name": "[#GAME_SPACE_BETWEEN_WORDS]",
+                "tips": "[#GAME_SPACE_BETWEEN_WORDS]",
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_THE_FONT]",
+                "tips": "[#GAME_THE_FONT]",
+                "compType": 9,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "wordWrap",
+                "name": "[#GAME_WORD_WRAP]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "overflow",
+                "name": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_APPEAR],[#GAME_HIDE]"
+                }
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowEnabled",
+                "name": "[#GAME_ACCORDING_TO_THE_SHADOW]",
+                "tips": "[#GAME_WHETHER_TEXT_IS_SHADED]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowColor",
+                "name": "[#GAME_SHADOW_COLOR]",
+                "tips": "[#GAME_SHADOW_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowDx",
+                "name": "[#GAME_SHADOW_HORIZONTAL_MIGRATION]",
+                "tips": "[#GAME_THE_SHADOW_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowDy",
+                "name": "[#GAME_SHADOW_VERTICAL_MIGRATION]",
+                "tips": "[#GAME_THE_SHADOW_IS_OFFSET_VERTICALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "stroke",
+                "name": "[#GAME_STROKE_SIZE_OF_TEXT]",
+                "tips": "[#GAME_WORDS_STROKE_EFFECT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "strokeColor",
+                "name": "[#GAME_WORD_STROKE_COLOR]",
+                "tips": "[#GAME_WORD_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_THE_VALUE_CHANGES]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_CALLED_WHEN_A_VALUE]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textWidth",
+                "name": "[#GAME_REAL_TEXT_WIDTH]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textHeight",
+                "name": "[#GAME_REAL_TEXT_HEIGHT]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textLength",
+                "name": "[#GAME_REAL_TEXT_LENGTH]",
+                "tips": "",
+                "compType": 0
+            }
+        ],
+        "tips": "[#GAME_VALUE_VARIABLE_COMPONENT_N_BIND_IN-GAME_VALUE_VARIABLES_FOR]"
+    },
+    {
+        "class": "UICustomGameNumber",
+        "icon": "editorAsset/img/UIIcon/c_gameValue.png",
+        "name": "[#GAME_THE_GAME_OF_NUMERICAL_NAME]",
+        "attributes": [
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "customData",
+                "name": "[#GAME_THE_GAME_OF_NUMERICAL]",
+                "tips": "[#GAME_EDITOR_PRESET_CUSTOM_GAME_VALUE_N_DIFFERENT_TEMPLATES_HAVE]",
+                "compType": 36
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_GAME_VALUE_TITLE],[#GAME_GAME_VALUE_DESCRIPTION],[#GAME_SINGLE_DIGIT_PREVIEW],[#GAME_TWO_DIGIT_PREVIEW],[#GAME_THREE_DIGIT_PREVIEW],[#GAME_FOUR_DIGIT_PREVIEW],[#GAME_FIVE_DIGIT_PREVIEW] ",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "previewNum",
+                "name": "[#GAME_EDITOR_PREVIEW]",
+                "tips": "[#GAME_EDITOR_PREVIEW_EFFECT]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_WHOLE_NUMBERS],[#GAME_KEEP_1_DECIMAL_POINT],[#GAME_KEEP_2_DECIMAL_POINT],[#GAME_KEEP_3_DECIMAL_POINT],[#GAME_KEEP_4_DECIMAL_POINT],[#GAME_KEEP_5_DECIMAL_POINT],[#GAME_KEEP_6_DECIMAL_POINT]",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "previewFixed",
+                "name": "[#GAME_DECIMAL_POINT_SETTING]",
+                "tips": "[#GAME_DECIMAL_POINT_SETTING]",
+                "compType": 2
+            },
+            {
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_THE_FONT_SIZE]",
+                "tips": "[#GAME_THE_FONT_SIZE]",
+                "compType": 1,
+                "compParam": {
+                    "minLimit": "12",
+                    "maxLimit": "50",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_THE_FONT_COLOR]",
+                "tips": "[#GAME_THE_FONT_COLOR]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_BOLD]",
+                "tips": "[#GAME_WHETHER_IN_BOLD]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_ITALICS]",
+                "tips": "[#GAME_WHETHER_IN_ITALICS]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "compType": 2
+            },
+            {
+                "enable": true,
+                "attribute": "valign",
+                "name": "[#GAME_VERTICAL_ALIGNMENT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_TYPE]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "leading",
+                "name": "[#GAME_LINE_SPACING]",
+                "tips": "[#GAME_LINE_SPACING_OF_TEXT_FONT]",
+                "compType": 0,
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": "10",
+                    "tickValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "letterSpacing",
+                "name": "[#GAME_SPACE_BETWEEN_WORDS]",
+                "tips": "[#GAME_TEXT_FONT_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_THE_FONT]",
+                "tips": "[#GAME_THE_FONT]",
+                "compType": 9,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "wordWrap",
+                "name": "[#GAME_WORD_WRAP]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "overflow",
+                "name": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_APPEAR],[#GAME_HIDE]"
+                }
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowEnabled",
+                "name": "[#GAME_ACCORDING_TO_THE_SHADOW]",
+                "tips": "[#GAME_WHETHER_TEXT_IS_SHADED]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowColor",
+                "name": "[#GAME_SHADOW_COLOR]",
+                "tips": "[#GAME_SHADOW_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowDx",
+                "name": "[#GAME_SHADOW_HORIZONTAL_MIGRATION]",
+                "tips": "[#GAME_THE_SHADOW_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowDy",
+                "name": "[#GAME_SHADOW_VERTICAL_MIGRATION]",
+                "tips": "[#GAME_SHADOW_VERTICAL_POSITION]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "stroke",
+                "name": "[#GAME_STROKE_SIZE_OF_TEXT]",
+                "tips": "[#GAME_WORDS_STROKE_EFFECT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "strokeColor",
+                "name": "[#GAME_WORD_STROKE_COLOR]",
+                "tips": "[#GAME_WORD_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textWidth",
+                "name": "[#GAME_REAL_TEXT_WIDTH]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textHeight",
+                "name": "[#GAME_REAL_TEXT_HEIGHT]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textLength",
+                "name": "[#GAME_REAL_TEXT_LENGTH]",
+                "tips": "",
+                "compType": 0
+            }
+        ],
+        "tips": "[#GAME_GAME_VALUE_COMPONENT_N_TEMPLATE_PRESET_CUSTOM_GAME_VALUE]"
+    },
+    {
+        "class": "UICustomGameString",
+        "icon": "editorAsset/img/UIIcon/c_gameString.png",
+        "name": "[#GAME_GAME_STRING_NAME]",
+        "tips": "[#GAME_GAME_STRING_COMPONENT_N_TEMPLATE_DEFAULT_CUSTOM_GAME_STRING]",
+        "attributes": [
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "customData",
+                "name": "[#GAME_GAME_STRING]",
+                "tips": "[#GAME_EDITOR_PRESET_CUSTOM_GAME_VALUE_N_DIFFERENT_TEMPLATES_HAVE]",
+                "compType": 51
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "inEditorText",
+                "name": "[#GAME_ANALOG_TEXT]",
+                "tips": "[#GAME_EDITOR_DISPLAY_SIMULATION_TEXT_THE_ACTUAL_GAME_TO_RUN]",
+                "compType": 9
+            },
+            {
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_THE_FONT_SIZE]",
+                "tips": "[#GAME_THE_FONT_SIZE]",
+                "compType": 1,
+                "compParam": {
+                    "minLimit": "12",
+                    "maxLimit": "50",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_THE_FONT_COLOR]",
+                "tips": "[#GAME_THE_FONT_COLOR]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_BOLD]",
+                "tips": "[#GAME_WHETHER_IN_BOLD]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_ITALICS]",
+                "tips": "[#GAME_WHETHER_IN_ITALICS]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "compType": 2
+            },
+            {
+                "enable": true,
+                "attribute": "valign",
+                "name": "[#GAME_VERTICAL_ALIGNMENT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_TYPE]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "leading",
+                "name": "[#GAME_LINE_SPACING]",
+                "tips": "[#GAME_LINE_SPACING_OF_TEXT_FONT]",
+                "compType": 0,
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": "10",
+                    "tickValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "letterSpacing",
+                "name": "[#GAME_SPACE_BETWEEN_WORDS]",
+                "tips": "[#GAME_TEXT_FONT_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_THE_FONT]",
+                "tips": "[#GAME_THE_FONT]",
+                "compType": 9,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "wordWrap",
+                "name": "[#GAME_WORD_WRAP]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "overflow",
+                "name": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_APPEAR],[#GAME_HIDE]"
+                }
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowEnabled",
+                "name": "[#GAME_ACCORDING_TO_THE_SHADOW]",
+                "tips": "[#GAME_WHETHER_TEXT_IS_SHADED]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowColor",
+                "name": "[#GAME_SHADOW_COLOR]",
+                "tips": "[#GAME_SHADOW_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowDx",
+                "name": "[#GAME_SHADOW_HORIZONTAL_MIGRATION]",
+                "tips": "[#GAME_THE_SHADOW_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowDy",
+                "name": "[#GAME_SHADOW_VERTICAL_MIGRATION]",
+                "tips": "[#GAME_SHADOW_VERTICAL_POSITION]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "stroke",
+                "name": "[#GAME_STROKE_SIZE_OF_TEXT]",
+                "tips": "[#GAME_WORDS_STROKE_EFFECT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "strokeColor",
+                "name": "[#GAME_WORD_STROKE_COLOR]",
+                "tips": "[#GAME_WORD_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textWidth",
+                "name": "[#GAME_REAL_TEXT_WIDTH]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textHeight",
+                "name": "[#GAME_REAL_TEXT_HEIGHT]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textLength",
+                "name": "[#GAME_REAL_TEXT_LENGTH]",
+                "tips": "",
+                "compType": 0
+            }
+        ]
+    },
+    {
+        "class": "UIAvatar",
+        "icon": "editorAsset/img/UIIcon/c_ava.png",
+        "name": "[#GAME_FIGURE_WALKING_NAME]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "avatarID",
+                "name": "[#GAME_FIGURE_WALKING]",
+                "tips": "[#GAME_FIGURE_WALKING]",
+                "compParam": {},
+                "compType": 3
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 5,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "scaleNumberX",
+                "name": "[#GAME_HORIZONTAL_DIRECTION_SCALING]",
+                "tips": "[#GAME_TRANSVERSE_SCALING]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 5,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "scaleNumberY",
+                "name": "[#GAME_VERTICAL_DIRECTION_SCALING]",
+                "tips": "[#GAME_PORTRAIT_SCALING]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": "7",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "orientationIndex",
+                "name": "[#GAME_ORIENTED]",
+                "tips": "[#GAME_4_DIRECTION_INDEX_REFERENCE_(0_1_-_LEFT_2]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": 1,
+                    "maxLimit": 120,
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "avatarFPS",
+                "name": "[#GAME_BROADCAST_FRAME_RATE]",
+                "tips": "[#GAME_FRAMES_PLAYED_PER_SECOND]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "playOnce",
+                "name": "[#GAME_PLAY_A]",
+                "tips": "[#GAME_PLAY_A]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "isPlay",
+                "name": "[#GAME_AUTOMATICALLY_PLAY]",
+                "tips": "[#GAME_AUTOMATICALLY_PLAY]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "avatarFrame",
+                "name": "[#GAME_THE_STARTING_FRAME]",
+                "tips": "[#GAME_INDICATES_THE_FRAME_FROM_WHICH_THE_INITIAL_DISPLAY_BEGINS]",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": 1,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "actionID",
+                "name": "[#GAME_THE_ACTION_ID]",
+                "tips": "[#GAME_THE_ACTION_ID]",
+                "compType": 21,
+                "compParam": {}
+            },
+            {
+                "compParam": {
+                    "minLimit": "-255",
+                    "maxLimit": "255",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "avatarHue",
+                "name": "[#GAME_HUE]",
+                "tips": "[#GAME_HUE]",
+                "compType": 1
+            },
+            {
+                "enable": false,
+                "attribute": "orientation",
+                "name": "orientation",
+                "tips": "",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "avatar",
+                "name": "avatar",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "syncLoadedEventWhenAssetExist",
+                "name": "syncLoadedEventWhenAssetExist",
+                "tips": ""
+            }
+        ],
+        "tips": "[#GAME_WALKING_DIAGRAM_ASSEMBLY]"
+    },
+    {
+        "class": "UIStandAvatar",
+        "icon": "editorAsset/img/UIIcon/c_savatar.png",
+        "name": "[#GAME_SET_PAINTING_NAME]",
+        "tips": "[#GAME_SET_PAINTING_COMPONENT]",
+        "attributes": [
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "avatarID",
+                "name": "[#GAME_SET_PAINTING]",
+                "tips": "[#GAME_SET_PAINTING]",
+                "compType": 29
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "actionID",
+                "name": "[#GAME_EXPRESSION]",
+                "tips": "[#GAME_EXPRESSION]",
+                "compType": 30
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 5,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "scaleNumberX",
+                "name": "[#GAME_HORIZONTAL_DIRECTION_SCALING]",
+                "tips": "[#GAME_TRANSVERSE_SCALING]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 5,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "scaleNumberY",
+                "name": "[#GAME_VERTICAL_DIRECTION_SCALING]",
+                "tips": "[#GAME_PORTRAIT_SCALING]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "flip",
+                "name": "[#GAME_FLIP_HORIZONTAL]",
+                "tips": "[#GAME_HORIZONTAL_REVERSAL]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "playOnce",
+                "name": "[#GAME_PLAY_A]",
+                "tips": "[#GAME_PLAY_A]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "isPlay",
+                "name": "[#GAME_AUTOMATICALLY_PLAY]",
+                "tips": "[#GAME_AUTOMATICALLY_PLAY]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 1,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "avatarFrame",
+                "name": "[#GAME_THE_STARTING_FRAME]",
+                "tips": "[#GAME_INDICATES_THE_FRAME_FROM_WHICH_THE_INITIAL_DISPLAY_BEGINS]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "minLimit": 1,
+                    "maxLimit": 120,
+                    "tickValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "avatarFPS",
+                "name": "[#GAME_FRAME_RATE]",
+                "tips": "[#GAME_FRAMES_PLAYED_PER_SECOND]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": -255,
+                    "maxLimit": 255,
+                    "tickValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "avatarHue",
+                "name": "[#GAME_HUE]",
+                "tips": "[#GAME_HUE]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "avatar",
+                "name": "avatar",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "orientationIndex",
+                "name": "orientationIndex",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "orientation",
+                "name": "orientation",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            }
+        ]
+    },
+    {
+        "class": "UIAnimation",
+        "icon": "editorAsset/img/UIIcon/c_ani.png",
+        "name": "[#GAME_ANIMATION_NAME]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "animationID",
+                "name": "[#GAME_ANIMATION]",
+                "tips": "[#GAME_ANIMATION]",
+                "compType": 4,
+                "compParam": {}
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 5,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "scaleNumberX",
+                "name": "[#GAME_HORIZONTAL_DIRECTION_SCALING]",
+                "tips": "[#GAME_TRANSVERSE_SCALING]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 5,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "scaleNumberY",
+                "name": "[#GAME_VERTICAL_DIRECTION_SCALING]",
+                "tips": "[#GAME_PORTRAIT_SCALING]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 1,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "aniFrame",
+                "name": "[#GAME_THE_STARTING_FRAME]",
+                "tips": "[#GAME_INDICATES_THE_FRAME_FROM_WHICH_THE_INITIAL_DISPLAY_BEGINS]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "minLimit": 1,
+                    "maxLimit": 120,
+                    "tickValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "playFps",
+                "name": "[#GAME_FRAME_RATE]",
+                "tips": "[#GAME_FRAMES_PLAYED_PER_SECOND]",
+                "compType": 1
+            },
+            {
+                "enable": true,
+                "attribute": "playType",
+                "name": "[#GAME_PLAY_MODE]",
+                "tips": "[#GAME_PLAY_MODE]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_DONT_PLAY],[#GAME_PLAY_A],[#GAME_LOOP_FOR]"
+                }
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "showHitEffect",
+                "name": "[#GAME_HIT_MODEL]",
+                "tips": "[#GAME_HIT_MODEL]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "silentMode",
+                "name": "[#GAME_SILENT_MODE]",
+                "tips": "[#GAME_SILENT_MODE]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "animation",
+                "name": "animation",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            }
+        ],
+        "tips": "[#GAME_THE_ANIMATION_COMPONENT]"
+    },
+    {
+        "class": "UIInput",
+        "icon": "editorAsset/img/UIIcon/c_txtInput.png",
+        "name": "[#GAME_INPUTABLE_TEXT]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "text",
+                "name": "[#GAME_DEFAULT_TEXT_CONTENT]",
+                "tips": "[#GAME_DEFAULT_TEXT_CONTENT]",
+                "compParam": {},
+                "compType": 9
+            },
+            {
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_THE_FONT_SIZE]",
+                "tips": "[#GAME_THE_FONT_SIZE]",
+                "compType": 1,
+                "compParam": {
+                    "minLimit": 12,
+                    "maxLimit": 50,
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_THE_FONT_COLOR]",
+                "tips": "[#GAME_THE_FONT_COLOR]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "prompt",
+                "name": "[#GAME_PROMPT_TEXT_CONTENT]",
+                "tips": "[#GAME_PROMPT_TEXT_CONTENT]",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "promptColor",
+                "name": "[#GAME_PROMPT_TEXT_COLOR]",
+                "tips": "[#GAME_PROMPT_TEXT_COLOR]",
+                "compType": 12
+            },
+            {
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_BOLD]",
+                "tips": "[#GAME_WHETHER_THE_TEXT_IS_IN_BOLD]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_ITALICS]",
+                "tips": "[#GAME_WHETHER_THE_TEXT_FONT_IS_ITALIC]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_TYPE]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_ALIGN_LEFT],[#GAME_CENTER_ALIGN],[#GAME_ALIGN_RIGHT]"
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "leading",
+                "name": "[#GAME_LINE_SPACING]",
+                "tips": "[#GAME_LINE_SPACING_OF_TEXT_FONT]",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_THE_FONT]",
+                "tips": "[#GAME_THE_TEXT_FONT]",
+                "compType": 9,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "wordWrap",
+                "name": "[#GAME_WORD_WRAP]",
+                "tips": "[#GAME_HOW_TO_HANDLE_TEXT_EXCEEDANCES]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "restrict",
+                "name": "[#GAME_THE_CHARACTER_THAT_RESTRICTS_INPUT]",
+                "tips": "[#GAME_RESTRICT_THE_INPUT_OF_CHARACTERS_SUCH_AS_A-ZA-Z0-9]",
+                "compParam": {},
+                "compType": 9
+            },
+            {
+                "enable": true,
+                "attribute": "inputMode",
+                "name": "[#GAME_INPUT_TYPE]",
+                "tips": "[#GAME_INPUT_TYPE]",
+                "compParam": {
+                    "items": "[#GAME_TEXT_MODE],[#GAME_CIPHER_MODE],[#GAME_NUMERIC_MODE],[#GAME_MULTILINE_TEXT]"
+                },
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 99999,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "maxChars",
+                "name": "[#GAME_MAXIMUM_NUMBER_OF_WORDS_THAT_CAN_BE_ENTERED]",
+                "tips": "[#GAME_WORD_LIMIT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowEnabled",
+                "name": "[#GAME_ACCORDING_TO_THE_SHADOW]",
+                "tips": "[#GAME_WHETHER_TEXT_IS_SHADED]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "shadowColor",
+                "name": "[#GAME_SHADOW_COLOR]",
+                "tips": "[#GAME_SHADOW_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "shadowDx",
+                "name": "[#GAME_SHADOW_HORIZONTAL_MIGRATION]",
+                "tips": "[#GAME_THE_SHADOW_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "shadowDy",
+                "name": "[#GAME_SHADOW_VERTICAL_MIGRATION]",
+                "tips": "[#GAME_SHADOW_VERTICAL_MIGRATION]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onInputFragEvent",
+                "name": "[#GAME_WHEN_TEXT_IS_ENTERED]",
+                "tips": "[#GAME_FRAGMENT_ECENT_EXECUTED_WHEN_TEXT_IS_ENTERED]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onEnterFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_CONFIRMED]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_EXECUTES_WHEN_THE_ENTER_KEY]",
+                "compType": 35
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": false,
+                "attribute": "textWidth",
+                "name": "[#GAME_REAL_TEXT_WIDTH]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textHeight",
+                "name": "[#GAME_REAL_TEXT_HEIGHT]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "textLength",
+                "name": "[#GAME_REAL_TEXT_LENGTH]",
+                "tips": "",
+                "compType": 0
+            }
+        ],
+        "tips": "[#GAME_INPUTABLE_TEXT_COMPONENT]"
+    },
+    {
+        "class": "UICheckBox",
+        "icon": "editorAsset/img/UIIcon/c_check.png",
+        "name": "[#GAME_CHECK_BOX_NAME]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "selected",
+                "name": "[#GAME_THE_SELECTED]",
+                "tips": "[#GAME_IF_THE_SELECTED]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "image1",
+                "name": "[#GAME_IMAGE_WHEN_NOT_SELECTED]",
+                "tips": "[#GAME_IMAGE_WHEN_NOT_SELECTED]",
+                "compParam": {},
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img1",
+                "name": "[#GAME_UNSELECTED_IMAGE_GRID]",
+                "tips": "[#GAME_UNSELECTED_IMAGE_GRID_(FORMAT_TOP_MARGIN_RIGHT_MARGIN_BOTTOM]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "image2",
+                "name": "[#GAME_SELECTED_IMAGE]",
+                "tips": "[#GAME_SELECTED_IMAGE]",
+                "compParam": {},
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img2",
+                "name": "[#GAME_SELECT_THE_IMAGE_GRID]",
+                "tips": "[#GAME_SELECT_IMAGE_GRID_(FORMAT_TOP_MARGIN_RIGHT_MARGIN_BOTTOM]",
+                "compType": 28
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_THE_CHANGE_IS_SELECTED]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_INVOKED_WHEN_STATE_CHANGES]",
+                "compType": 35
+            }
+        ],
+        "tips": "[#GAME_CHECK_BOX_COMPONENT]"
+    },
+    {
+        "class": "UISwitch",
+        "icon": "editorAsset/img/UIIcon/c_switch.png",
+        "name": "[#GAME_SWITCH_NAME]",
+        "attributes": [
+            {
+                "compParam": {
+                    "items": "[#GAME_SWITCH],[#GAME_(2)_WEEKS_ORDERS][#GAME_SWITCH]",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "switchMode",
+                "name": "[#GAME_VARIABLE_MODE]",
+                "tips": "[#GAME_VARIABLE_MODE]",
+                "compType": 2
+            },
+            {
+                "enable": true,
+                "attribute": "selected",
+                "name": "[#GAME_BOUND_SWITCH]",
+                "tips": "[#GAME_BOUND_SWITCH]",
+                "compType": 7,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "image1",
+                "name": "[#GAME_SWITCH_OFF_PICTURES]",
+                "tips": "[#GAME_SWITCH_OFF_PICTURES]",
+                "compParam": {},
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img1",
+                "name": "[#GAME_THE_SWITCH_IS_OFF_WHEN_THE_PICTURE_IS_NINE]",
+                "tips": "[#GAME_SWITCH_OFF_IMAGE_9_GRID_FORMAT_TOP_MARGIN_RIGHT_MARGIN]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "image2",
+                "name": "[#GAME_PICTURE_WHEN_SWITCH_ON]",
+                "tips": "[#GAME_PICTURE_WHEN_SWITCH_ON]",
+                "compParam": {},
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img2",
+                "name": "[#GAME_PICTURE_9_GRID_WHEN_THE_SWITCH_IS_ON]",
+                "tips": "[#GAME_9_GRID_(FORMAT_TOP_MARGIN_RIGHT_MARGIN_BOTTOM_MARGIN]",
+                "compType": 28
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "previewselected",
+                "name": "[#GAME_PREVIEW_THE_EFFECT_WHEN_SELECTED]",
+                "tips": "[#GAME_PREVIEW_ONLY_THE_EFFECT_WHEN_SELECTED_IN_THE_EDITOR]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "switchID",
+                "name": "switchID",
+                "tips": "",
+                "compType": 7
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Width",
+                "name": "grid9img1Width",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Height",
+                "name": "grid9img1Height",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Skin",
+                "name": "grid9img1Skin",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Width",
+                "name": "grid9img2Width",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Height",
+                "name": "grid9img2Height",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Skin",
+                "name": "grid9img2Skin",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_THE_CHANGE_IS_SELECTED]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_INVOKED_WHEN_STATE_CHANGES]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            }
+        ],
+        "tips": "[#GAME_SWITCH_COMPONENT_N_BIND_SWITCH_VARIABLES_FOR_REAL-TIME_DISPLAY]"
+    },
+    {
+        "class": "UITabBox",
+        "icon": "editorAsset/img/UIIcon/c_tab.png",
+        "name": "[#GAME_TAB]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "selectedIndex",
+                "name": "[#GAME_SELECTED_ITEM_INDEX]",
+                "tips": "[#GAME_SELECTED_ITEM_INDEX]",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "itemImage1",
+                "name": "[#GAME_IMAGE_WHEN_TAG_IS_NOT_SELECTED]",
+                "tips": "[#GAME_THE_IMAGE_THAT_IS_DISPLAYED_WHEN_THE_TAG_IS]",
+                "compParam": {},
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img1",
+                "name": "[#GAME_WHEN_THE_LABEL_IS_NOT_CHECKED]",
+                "tips": "[#GAME_IMAGE_9_GRIDS_WHEN_LABEL_IS_NOT_SELECTED_FORMAT]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "itemImage2",
+                "name": "[#GAME_IMAGE_WHEN_THE_TAG_IS_SELECTED]",
+                "tips": "[#GAME_THE_IMAGE_THAT_APPEARS_WHEN_THE_TAG_IS_SELECTED]",
+                "compParam": {},
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "grid9img2",
+                "name": "[#GAME_WHEN_THE_LABEL_IS_CHECKED]",
+                "tips": "[#GAME_IMAGE_9_GRID_(FORMAT_TOP_MARGIN_RIGHT_MARGIN_BOTTOM]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "itemWidth",
+                "name": "[#GAME_LABEL_WIDTH]",
+                "tips": "[#GAME_LABEL_WIDTH]",
+                "compParam": {},
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "itemHeight",
+                "name": "[#GAME_LABEL_HEIGHT]",
+                "tips": "[#GAME_LABEL_HEIGHT]",
+                "compParam": {},
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "items",
+                "name": "[#GAME_LABEL_ITEM]",
+                "tips": "[#GAME_LABEL_ITEMS_SEPARATED_BY_COMMAS_N_PLACING_A_COMPONENT]",
+                "compParam": {},
+                "compType": 9
+            },
+            {
+                "enable": true,
+                "attribute": "rowMode",
+                "name": "[#GAME_LONGITUDINAL_OR_NOT]",
+                "tips": "[#GAME_LONGITUDINAL_OR_NOT]",
+                "compType": 15,
+                "compParam": {}
+            },
+            {
+                "enable": true,
+                "attribute": "spacing",
+                "name": "[#GAME_LABEL_PITCH]",
+                "tips": "[#GAME_LABEL_PITCH]",
+                "compType": 0,
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "labelSize",
+                "name": "[#GAME_TEXT_FONT_SIZE]",
+                "tips": "[#GAME_TEXT_FONT_SIZE]",
+                "compType": 1,
+                "compParam": {
+                    "minLimit": "1",
+                    "maxLimit": "100",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                }
+            },
+            {
+                "enable": true,
+                "attribute": "labelColor",
+                "name": "[#GAME_UNSELECTED_TEXT_COLOR]",
+                "tips": "[#GAME_UNSELECTED_TEXT_COLOR]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "labelFont",
+                "name": "[#GAME_THE_TEXT_FONT]",
+                "tips": "[#GAME_THE_TEXT_FONT]",
+                "compType": 9
+            },
+            {
+                "enable": true,
+                "attribute": "labelBold",
+                "name": "[#GAME_THE_TEXT_IN_BOLD]",
+                "tips": "[#GAME_WHETHER_THE_TEXT_IS_BOLD]",
+                "compParam": {},
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "labelItalic",
+                "name": "[#GAME_THE_TEXT_ITALIC]",
+                "tips": "[#GAME_WHETHER_THE_TEXT_IS_ITALIC]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_THE_TEXT_IS_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "enable": true,
+                "attribute": "labelAlign",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_OF_TEXT]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_OF_TEXT]",
+                "compType": 2,
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                }
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]",
+                    "showIndex": true
+                },
+                "enable": true,
+                "attribute": "labelValign",
+                "name": "[#GAME_VERTICAL_ALIGNMENT_OF_TEXT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_OF_TEXT]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "labelLetterSpacing",
+                "name": "[#GAME_TEXT_WORD_SPACING]",
+                "tips": "[#GAME_TEXT_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "labelSelectedColor",
+                "name": "[#GAME_TEXT_COLOR_WHEN_SELECTED]",
+                "tips": "[#GAME_TEXT_COLOR_WHEN_SELECTED]",
+                "compType": 12,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "labelDx",
+                "name": "[#GAME_HORIZONTAL_OFFSET_OF_LABEL_TEXT]",
+                "tips": "[#GAME_HORIZONTAL_OFFSET_OF_THE_LABEL_TEXT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "labelDy",
+                "name": "[#GAME_THE_LABEL_TEXT_IS_OFFSET_VERTICALLY]",
+                "tips": "[#GAME_THE_OFFSET_OF_THE_VERTICAL_DIRECTION_OF_THE_LABEL]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "labelStroke",
+                "name": "[#GAME_TEXT_STROKE_SIZE]",
+                "tips": "[#GAME_TEXT_STROKE_EFFECT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "labelStrokeColor",
+                "name": "[#GAME_TEXT_STROKE_COLOR]",
+                "tips": "[#GAME_TEXT_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Skin",
+                "name": "grid9img1Skin",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Skin",
+                "name": "grid9img2Skin",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Width",
+                "name": "grid9img1Width",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img1Height",
+                "name": "grid9img1Height",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Width",
+                "name": "grid9img2Width",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "grid9img2Height",
+                "name": "grid9img2Height",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "length",
+                "name": "length",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_THE_SELECTED_MID-ITEM_CHANGES]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_CALLED_WHEN_AN_ITEM]",
+                "compType": 35
+            }
+        ],
+        "tips": "[#GAME_LABEL_TAB_COMPONENT_N_PLACING_A_COMPONENT_UNDER_A]"
+    },
+    {
+        "class": "UISlider",
+        "icon": "editorAsset/img/UIIcon/c_slider.png",
+        "name": "[#GAME_SLIDER_CONTROL]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "image1",
+                "name": "[#GAME_THE_BACKGROUND_IMAGE]",
+                "tips": "[#GAME_SLIDER_BACKGROUND_IMAGE]",
+                "compType": 13,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "bgGrid9",
+                "name": "[#GAME_BACKGROUND_IMAGE_NINE_SQUARES]",
+                "tips": "[#GAME_BACKGROUND_IMAGE_9_GRIDS_(FORMAT_TOP_MARGIN_RIGHT_MARGIN]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "image2",
+                "name": "[#GAME_THE_SLIDER_IMAGES]",
+                "tips": "[#GAME_THE_SLIDER_IMAGES]",
+                "compType": 13,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "blockGrid9",
+                "name": "[#GAME_SLIDER_PICTURE_NINE_SQUARES]",
+                "tips": "[#GAME_SLIDER_IMAGE_NINE_GRID_(FORMAT_TOP_MARGIN_RIGHT_MARGIN]",
+                "compType": 28
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "image3",
+                "name": "[#GAME_FILL_THE_IMAGE]",
+                "tips": "[#GAME_FILL_THE_IMAGE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "blockFillGrid9",
+                "name": "[#GAME_FILL_THE_DIAGRAM_9_CELLS]",
+                "tips": "[#GAME_FILL_THE_IMAGE_WITH_NINE_GRIDS_(FORMAT_TOP_MARGIN]",
+                "compType": 28
+            },
+            {
+                "enable": true,
+                "attribute": "step",
+                "name": "[#GAME_THE_STEP_VALUE]",
+                "tips": "[#GAME_THE_STEP_VALUE]",
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "min",
+                "name": "[#GAME_THE_MINIMUM_VALUE]",
+                "tips": "[#GAME_THE_MINIMUM_VALUE]",
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "max",
+                "name": "[#GAME_THE_MAXIMUM]",
+                "tips": "[#GAME_THE_MAXIMUM]",
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "value",
+                "name": "[#GAME_VALUE]",
+                "tips": "[#GAME_VALUE]",
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "compType": 0
+            },
+            {
+                "enable": true,
+                "attribute": "transverseMode",
+                "name": "[#GAME_LANDSCAPE_MODE]",
+                "tips": "[#GAME_HORIZONTAL_MODE_OR_NOT]",
+                "compParam": {},
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_BLOCK_MODE],[#GAME_FILL_MODE],[#GAME_BLOCK_AND_FILL_DISPLAY_AT]"
+                },
+                "enable": true,
+                "attribute": "blockFillMode",
+                "name": "[#GAME_DISPLAY_MODE]",
+                "tips": "[#GAME_PROGRESS_BAR_DISPLAY_MODE]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THE_INNER_BOUNDARY_OF_THE_SLIDER_IS_ALIGNED],[#GAME_THE_CENTER_OF_THE_SLIDER_IS_ALIGNED],[#GAME_THE_OUTER_BOUNDARY_OF_THE_SLIDER_IS_ALIGNED]",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "blockPosMode",
+                "name": "[#GAME_INITIAL_SLIDER_POSITION]",
+                "tips": "[#GAME_DEFAULTS_TO_INLINE_SLIDER_BORDER_ALIGNMENT]",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "fillStrething",
+                "name": "[#GAME_FILL_THE_IMAGE_WITH_A_MASK]",
+                "tips": "[#GAME_USING_MASK_MODE_DO_NOT_STRETCH_THE_FILL_IMAGE]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "isBindingVarID",
+                "name": "[#GAME_VALUE_WHETHER_TO_BIND_VARIABLES]",
+                "tips": "",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "bindingVarID",
+                "name": "[#GAME_VALUE_BOUND_VARIABLES]",
+                "tips": "",
+                "compType": 6
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_THE_VALUE_CHANGES]",
+                "tips": "",
+                "compType": 35
+            }
+        ],
+        "tips": "[#GAME_THE_SLIDER_COMPONENT]"
+    },
+    {
+        "class": "UIGUI",
+        "icon": "editorAsset/img/UIIcon/c_ui.png",
+        "name": "[#GAME_THE_CHILD_INTERFACE]",
+        "attributes": [
+            {
+                "enable": true,
+                "attribute": "guiID",
+                "name": "[#GAME_SPECIFY_THE_INTERFACE]",
+                "tips": "[#GAME_INTERFACE]",
+                "compType": 5,
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "instanceClassName",
+                "name": "[#GAME_BINDING_CLASSES]",
+                "tips": "[#GAME_BINDING_CLASS_THE_SYSTEM_WILL_USE_THE_SPECIFIED_BINDING]",
+                "compType": 9
+            },
+            {
+                "enable": false,
+                "attribute": "root",
+                "name": "root",
+                "tips": "[#GAME_THE_ROOT_CONTAINER]",
+                "compParam": {}
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "useDPCoord",
+                "name": "useDPCoord",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpOpacity",
+                "name": "dpOpacity",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpX",
+                "name": "dpX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpY",
+                "name": "dpY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleX",
+                "name": "dpScaleX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpScaleY",
+                "name": "dpScaleY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraX",
+                "name": "dpCameraX",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraY",
+                "name": "dpCameraY",
+                "tips": ""
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpCameraZ",
+                "name": "dpCameraZ",
+                "tips": ""
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 10,
+                    "stepValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": false,
+                "attribute": "dpWidth",
+                "name": "dpWidth",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "dpHeight",
+                "name": "dpHeight",
+                "tips": ""
+            }
+        ],
+        "tips": "[#GAME_SUBINTERFACE_COMPONENT_N_FOR_NESTING_SPECIFIED_INTERFACE]"
+    },
+    {
+        "class": "UIList",
+        "icon": "editorAsset/img/UIIcon/c_list.png",
+        "name": "[#GAME_THE_LIST_OF]",
+        "tips": "[#GAME_A_LIST_OF_COMPONENTS]",
+        "attributes": [
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemModelGUI",
+                "name": "[#GAME_A_MODEL]",
+                "tips": "[#GAME_A_MODEL]",
+                "compType": 5
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "previewSize",
+                "name": "[#GAME_NUMBER_OF_EDITOR_PREVIEW_ITEMS]",
+                "tips": "[#GAME_ONLY_USED_TO_PREVIEW_THE_DISPLAY_IN_THE_EDITOR]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "selectEnable",
+                "name": "[#GAME_ALLOWS_THE_SELECTED]",
+                "tips": "[#GAME_CONTROL_TO_ALLOW_SELECTION]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "minLimit": "1",
+                    "maxLimit": 1000,
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "repeatX",
+                "name": "[#GAME_HORIZONTAL_MAXIMUM_NUMBER_OF_CELLS]",
+                "tips": "[#GAME_HORIZONTAL_MAXIMUM_NUMBER_OF_CELLS]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemWidth",
+                "name": "[#GAME_CELL_WIDTH]",
+                "tips": "[#GAME_CELL_WIDTH]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemHeight",
+                "name": "[#GAME_CELL_HEIGHT]",
+                "tips": "[#GAME_CELL_HEIGHT]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "minLimit": "0",
+                    "maxLimit": "100",
+                    "tickValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "spaceX",
+                "name": "[#GAME_HORIZONTAL_SPACING_OF_CELLS]",
+                "tips": "[#GAME_HORIZONTAL_SPACING_OF_CELLS]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": "100",
+                    "tickValue": 1,
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "spaceY",
+                "name": "[#GAME_VERTICAL_SPACING_OF_CELLS]",
+                "tips": "[#GAME_VERTICAL_SPACING_OF_CELLS]",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_DON'T_SHOW],[#GAME_ACCORDING_TO],[#GAME_AUTOMATIC_DISPLAY],[#GAME_SHOW_VERTICAL_SCROLL_BAR_ONLY],[#GAME_SHOW_HORIZONTAL_SCROLL_BAR_ONLY]"
+                },
+                "enable": true,
+                "attribute": "scrollShowType",
+                "name": "[#GAME_SCROLL_TYPE]",
+                "tips": "[#GAME_SCROLL_TYPE]",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "hScrollBar",
+                "name": "[#GAME_HORIZONTAL_SCROLL_BAR_SLIDER_SKIN]",
+                "tips": "[#GAME_HORIZONTAL_SCROLL_BAR_SLIDER_SKIN]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "hScrollBg",
+                "name": "[#GAME_HORIZONTAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "tips": "[#GAME_HORIZONTAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "vScrollBar",
+                "name": "[#GAME_VERTICAL_SCROLL_BAR_SLIDER_SKIN]",
+                "tips": "[#GAME_VERTICAL_SCROLL_BAR_SLIDER_SKIN]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "vScrollBg",
+                "name": "[#GAME_VERTICAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "tips": "[#GAME_VERTICAL_SCROLLBAR_BACKGROUND_SKIN]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "scrollWidth",
+                "name": "[#GAME_SCROLLBAR_WIDTH]",
+                "tips": "[#GAME_SCROLLBAR_WIDTH]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "selectImageURL",
+                "name": "[#GAME_SELECT_EFFECT_IMAGE]",
+                "tips": "[#GAME_SELECT_EFFECT_IMAGE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "selectImageGrid9",
+                "name": "[#GAME_SELECT_EFFECT_IMAGE_GRID]",
+                "tips": "[#GAME_SELECT_EFFECT_IMAGE_9_GRID_(FORMAT_TOP_MARGIN_RIGHT]",
+                "compType": 28
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": "1",
+                    "tickValue": "0.01",
+                    "limitInteger": false,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "selectedImageAlpha",
+                "name": "[#GAME_SELECT_EFFECT_IMAGE_TRANSPARENCY]",
+                "tips": "[#GAME_SELECT_EFFECT_IMAGE_TRANSPARENCY]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "selectedImageOnTop",
+                "name": "[#GAME_CHECK_WHETHER_THE_EFFECT_IMAGE_IS_AT_THE_TOP]",
+                "tips": "[#GAME_CHECK_WHETHER_THE_EFFECT_IMAGE_IS_AT_THE_TOP]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "overImageURL",
+                "name": "[#GAME_HOVER_THE_CURSOR_OVER_THE_PICTURE]",
+                "tips": "[#GAME_CURSOR_EFFECT_IMAGE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "overImageGrid9",
+                "name": "[#GAME_HOVER_THE_CURSOR_OVER_THE_IMAGE_GRID]",
+                "tips": "[#GAME_CURSOR_EFFECT_IMAGE_9_GRIDS_(FORMAT_TOP_MARGIN_RIGHT]",
+                "compType": 28
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": "1",
+                    "tickValue": "0.01",
+                    "limitInteger": false,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "overImageAlpha",
+                "name": "[#GAME_HOVER_THE_CURSOR_OVER_THE_IMAGE_TRANSPARENCY]",
+                "tips": "[#GAME_CURSOR_EFFECT_IMAGE_TRANSPARENCY]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "overImageOnTop",
+                "name": "[#GAME_WHETHER_THE_CURSOR_HOVER_IMAGE_IS_AT_THE_TOP]",
+                "tips": "[#GAME_WHETHER_THE_CURSOR_EFFECT_PICTURE_IS_AT_THE_TOP]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "overSelectMode",
+                "name": "[#GAME_HOVER_THE_CURSOR_TO_SELECT_THE_MODE]",
+                "tips": "[#GAME_HOVER_THE_CURSOR_AS_THE_SELECTED_EFFECT_(UNCHECK_THE]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THIS_EFFECT_IS_ENABLED_ONLY_ON_MOBILE_DEVICES],[#GAME_ALWAYS_ENABLE_THIS_EFFECT],[#GAME_THERE_IS_NO]"
+                },
+                "enable": true,
+                "attribute": "slowmotionType",
+                "name": "[#GAME_SLIDE_THE_CONTENT_AREA_TO_SCROLL]",
+                "tips": "[#GAME_USE_THE_MOUSE_OR_HAND_TO_SLIDE_THE_AREA]",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "length",
+                "name": "[#GAME_COL_DATA_CONUT]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "selectedIndex",
+                "name": "[#GAME_SELECTED_ITEM_INDEX]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "subitemIndentation",
+                "name": "[#GAME_INDENT_SUB_ITEM]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "overIndex",
+                "name": "[#GAME_HOVER_ITEM_INDEX]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent1",
+                "name": "[#GAME_ON_SELECTINDEX_CHANGED]",
+                "tips": "[#GAME_ON_SELECTINDEX_CHANGED_TIPS]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent2",
+                "name": "[#GAME_ON_OVERINDEX_CHANGED]",
+                "tips": "[#GAME_ON_OVERINDEX_CHANGED_TIPS]",
+                "compType": 35
+            }
+        ]
+    },
+    {
+        "class": "UIComboBox",
+        "icon": "editorAsset/img/UIIcon/c_comboBox.png",
+        "name": "[#GAME_A_DROP-DOWN_BOX]",
+        "tips": "[#GAME_DROP-DOWN_BOX_COMPONENTS]",
+        "attributes": [
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemLabels",
+                "name": "[#GAME_OPTIONS]",
+                "tips": "[#GAME_DROP-DOWN_BOX_OPTIONS_SEPARATED_BY_COMMAS]",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "selectedIndex",
+                "name": "[#GAME_THE_INDEX_SELECTED_BY_DEFAULT]",
+                "tips": "[#GAME_THE_INDEX_IS_SELECTED_BY_DEFAULT_CORRESPONDING_TO_THE]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "bgSkin",
+                "name": "[#GAME_THE_BACKGROUND_IMAGE]",
+                "tips": "[#GAME_DROP_-_DOWN_BOX_BACKGROUND_IMAGE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "bgGrid9",
+                "name": "[#GAME_BACKGROUND_IMAGE_NINE_SQUARES]",
+                "tips": "[#GAME_DROPDOWN_BOX_BACKGROUND_IMAGE_9_GRIDS_(FORMAT_TOP_MARGIN]",
+                "compType": 28
+            },
+            {
+                "compParam": {
+                    "minLimit": "12",
+                    "maxLimit": "50",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "fontSize",
+                "name": "[#GAME_TEXT_SIZE]",
+                "tips": "[#GAME_TEXT_SIZE]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "color",
+                "name": "[#GAME_TEXT_TEXT_COLOR]",
+                "tips": "[#GAME_TEXT_TEXT_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "bold",
+                "name": "[#GAME_THE_TEXT_IN_BOLD]",
+                "tips": "[#GAME_IS_THE_TEXT_BOLD]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "italic",
+                "name": "[#GAME_THE_TEXT_ITALIC]",
+                "tips": "[#GAME_WHETHER_THE_TEXT_IS_ITALIC_T]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "smooth",
+                "name": "[#GAME_THE_TEXT_IS_SMOOTH]",
+                "tips": "[#GAME_IF_CHECKED_THE_EDGES_OF_THE_TEXT_WILL_BE]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "enable": true,
+                "attribute": "align",
+                "name": "[#GAME_HORIZONTAL_TEXT_ALIGNMENT]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_OF_TEXT]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                },
+                "enable": true,
+                "attribute": "valign",
+                "name": "[#GAME_VERTICAL_TEXT_ALIGNMENT]",
+                "tips": "[#GAME_VERTICAL_ALIGNMENT_OF_TEXT]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "letterSpacing",
+                "name": "[#GAME_TEXT_WORD_SPACING]",
+                "tips": "[#GAME_TEXT_FONT_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "font",
+                "name": "[#GAME_TEXT_STYLE]",
+                "tips": "[#GAME_TEXT_STYLE]",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "textDx",
+                "name": "[#GAME_THE_TEXT_IS_OFFSET_HORIZONTALLY]",
+                "tips": "[#GAME_THE_TEXT_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "textStroke",
+                "name": "[#GAME_TEXT_STROKE_SIZE]",
+                "tips": "[#GAME_TEXT_STROKE_EFFECT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "textStrokeColor",
+                "name": "[#GAME_TEXT_STROKE_COLOR]",
+                "tips": "[#GAME_TEXT_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "displayItemSize",
+                "name": "[#GAME_THE_NUMBER_OF_CELLS_DISPLAYED]",
+                "tips": "[#GAME_THE_NUMBER_OF_CELLS_DISPLAYED]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "listScrollBg",
+                "name": "[#GAME_DROP_-_DOWN_BOX_SCROLL_BAR_BACKGROUND_IMAGE]",
+                "tips": "[#GAME_DROP_-_DOWN_BOX_SCROLL_BAR_BACKGROUND_PICTURE]",
+                "compType": 13
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "listScrollBar",
+                "name": "[#GAME_DROP_DOWN_BOX_SCROLL_BAR_SLIDER]",
+                "tips": "[#GAME_DROP_DOWN_BOX_SCROLL_BAR_SLIDER]",
+                "compType": 13
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 1,
+                    "tickValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "listAlpha",
+                "name": "[#GAME_DROP_-_DOWN_BOX_LIST_TRANSPARENCY]",
+                "tips": "[#GAME_DROP_-_DOWN_BOX_LIST_TRANSPARENCY]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "listBgColor",
+                "name": "[#GAME_DROP_-_DOWN_BOX_BACKGROUND_COLOR]",
+                "tips": "[#GAME_DROP_-_DOWN_LIST_OF_BACKGROUND_COLORS]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemHeight",
+                "name": "[#GAME_CELL_HEIGHT]",
+                "tips": "[#GAME_DROP_-_DOWN_BOX_CELL_HEIGHT]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "minLimit": "12",
+                    "maxLimit": "50",
+                    "tickValue": "1",
+                    "limitInteger": true,
+                    "lockTextLimit": false
+                },
+                "enable": true,
+                "attribute": "itemFontSize",
+                "name": "[#GAME_CELL_TEXT_FONT_SIZE]",
+                "tips": "[#GAME_CELL_TEXT_FONT_SIZE]",
+                "compType": 1
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemColor",
+                "name": "[#GAME_CELL_TEXT_COLOR]",
+                "tips": "[#GAME_CELL_TEXT_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemBold",
+                "name": "[#GAME_CELL_BOLD]",
+                "tips": "[#GAME_IS_THE_TEXT_OF_THE_DROP-DOWN_CELL_BOLD]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemItalic",
+                "name": "[#GAME_CELL_ITALICS]",
+                "tips": "[#GAME_IS_THE_TEXT_OF_THE_DROPDOWN_CELL_ITALIC]",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THE_LEFT],[#GAME_THE_CENTER],[#GAME_IN_THE_RIGHT]"
+                },
+                "enable": true,
+                "attribute": "itemAlign",
+                "name": "[#GAME_HORIZONTAL_ALIGNMENT_OF_CELLS]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_OF_DROP_-_DOWN_BOX_CELLS]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_ON_THE],[#GAME_IN_THE_MIDDLE],[#GAME_UNDER_THE_B]"
+                },
+                "enable": true,
+                "attribute": "itemValign",
+                "name": "[#GAME_VERTICAL_ALIGNMENT_OF_CELLS]",
+                "tips": "[#GAME_HORIZONTAL_ALIGNMENT_OF_DROP_-_DOWN_BOX_CELLS]",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "lowerLimit": -1000,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "itemLetterSpacing",
+                "name": "[#GAME_CELL_WORD_SPACING]",
+                "tips": "[#GAME_DROP_DOWN_CELL_WORD_SPACING]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemFont",
+                "name": "[#GAME_CELL_TEXT_FONT_STYLE]",
+                "tips": "[#GAME_CELL_TEXT_FONT_STYLE]",
+                "compType": 9
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemOverColor",
+                "name": "[#GAME_CELL_HOVER_TEXT_COLOR]",
+                "tips": "[#GAME_CELL_HOVER_TEXT_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemOverBgColor",
+                "name": "[#GAME_THE_CELL_HOVERS_OVER_THE_BACKGROUND_COLOR]",
+                "tips": "[#GAME_THE_BACKGROUND_COLOR_OF_THE_MOUSE_OVER_THE_CELL]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemTextDx",
+                "name": "[#GAME_HORIZONTAL_OFFSET_OF_CELL_TEXT]",
+                "tips": "[#GAME_CELL_TEXT_IS_OFFSET_HORIZONTALLY]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemTextDy",
+                "name": "[#GAME_CELL_TEXT_IS_OFFSET_VERTICALLY]",
+                "tips": "[#GAME_CELL_TEXT_IS_OFFSET_VERTICALLY_DIRECTION]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 0.1,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "itemTextStroke",
+                "name": "[#GAME_CELL_TEXT_STROKE_SIZE]",
+                "tips": "[#GAME_CELL_TEXT_STROKE_EFFECT]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "itemTextStrokeColor",
+                "name": "[#GAME_CELL_TEXT_STROKE_COLOR]",
+                "tips": "[#GAME_CELL_TEXT_STROKE_COLOR]",
+                "compType": 12
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onChangeFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_THE_SELECTED_MID-ITEM_CHANGES]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_CALLED_WHEN_AN_ITEM]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "isComboBoxOpen",
+                "name": "[#GAME_IS_OPEN_ING]",
+                "tips": "",
+                "compType": 15
+            }
+        ]
+    },
+    {
+        "class": "UIVideo",
+        "icon": "editorAsset/img/UIIcon/c_video.png",
+        "name": "[#GAME_VIDEO_NAME]",
+        "tips": "[#GAME_VIDEO_COMPONENT]",
+        "attributes": [
+            {
+                "compParam": {
+                    "modeType": 0,
+                    "rootPath": "asset/video/",
+                    "formatType": "mp4,webm,ogg"
+                },
+                "enable": true,
+                "attribute": "videoURL",
+                "name": "[#GAME_VIDEO_ADDRESS]",
+                "tips": "[#GAME_SUPPORTED_FORMATS_MP4_WEBM_OGG]",
+                "compType": 13
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_PLAY],[#GAME_STOP_PLAYING],[#GAME_PAUSE_PLAYING]",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "playType",
+                "name": "[#GAME_PLAY_MODE]",
+                "tips": "",
+                "compType": 2
+            },
+            {
+                "compParam": {
+                    "minLimit": 0,
+                    "maxLimit": 1,
+                    "tickValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": true
+                },
+                "enable": true,
+                "attribute": "volume",
+                "name": "[#GAME_THE_VOLUME]",
+                "tips": "",
+                "compType": 1
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 10,
+                    "stepValue": 0.01,
+                    "limitInteger": false,
+                    "lockTextLimit": true,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "playbackRate",
+                "name": "[#GAME_PLAY_SPEED]",
+                "tips": "[#GAME_1_INDICATES_100_RATE]",
+                "compType": 0
+            },
+            {
+                "compParam": {
+                    "lowerLimit": 0,
+                    "upperLimit": 1000,
+                    "stepValue": 1,
+                    "limitInteger": false,
+                    "lockTextLimit": false,
+                    "xDragEnabled": true,
+                    "yDragEnabled": true
+                },
+                "enable": true,
+                "attribute": "currentTime",
+                "name": "[#GAME_STARTING_TIME]",
+                "tips": "[#GAME_UNIT_SECOND_N_THE_BROWSER_DOES_NOT_SUPPORT_THIS]",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "muted",
+                "name": "[#GAME_SILENT_MODE]",
+                "tips": "[#GAME_THE_BROWSER_WILL_BE_FORCED_TO_MUTE_MODE_BY]",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "loop",
+                "name": "[#GAME_LOOP_FOR]",
+                "tips": "",
+                "compType": 15
+            },
+            {
+                "compParam": {
+                    "items": "[#GAME_THE_UPPER_LEFT_CORNER],[#GAME_CENTER]",
+                    "showIndex": false
+                },
+                "enable": true,
+                "attribute": "pivotType",
+                "name": "[#GAME_THE_PIVOT_POINT]",
+                "tips": "",
+                "compType": 2
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "flip",
+                "name": "[#GAME_FLIP_HORIZONTAL]",
+                "tips": "",
+                "compType": 15
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onLoadedFragEvent",
+                "name": "[#GAME_PROCESS_WHEN_LOADING_IS_COMPLETE]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_CALLED_WHEN_THE_VIDEO]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onErrorFragEvent",
+                "name": "[#GAME_HANDLE_WHEN_AN_ERROR_OCCURS]",
+                "tips": "[#GAME_THE_FRAGMENT_EVENT_THAT_IS_CALLED_WHEN_A_VIDEO]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": true,
+                "attribute": "onCompleteFragEvent",
+                "name": "[#GAME_PROCESSING_WHEN_PLAYBACK_IS_COMPLETE]",
+                "tips": "[#GAME_THE_SEGMENT_EVENT_THAT_IS_CALLED_WHEN_THE_VIDEO]",
+                "compType": 35
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "duration",
+                "name": "[#GAME_TOTAL_VIDEO_TIME]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "networkState",
+                "name": "[#GAME_NETWORK_STATE]",
+                "tips": "",
+                "compType": 0
+            },
+            {
+                "compParam": {},
+                "enable": false,
+                "attribute": "isPlaying",
+                "name": "[#GAME_IS_PLAYING]",
+                "tips": "",
+                "compType": 15
+            }
+        ]
+    }
+]

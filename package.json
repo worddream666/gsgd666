@@ -1,0 +1,25 @@
+{
+  "name": "@gamecretaor/template_arpg",
+  "version": "1.09",
+  "private": true,
+  "description": "GameCreator - ARPG - 黑之书 - Book of Black（角色扮演-即时战斗 RPG-Action）",
+  "main": "index.html",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "watch": "tsc -b tsconfig.json --watch",
+    "prepublish": "gc_vscode_init && node scripts/init.js && npm run build",
+    "run": "run ."
+  },
+  "author": "gamecretaor",
+  "license": "ISC",
+  "window": {
+    "width": 1500,
+    "height": 900,
+    "icon": "icon.png"
+  },
+  "devDependencies": {
+    "@gamecreator/gc-editor-release": "^0.0.1",
+    "@gamecreator/gc-template-vscode": "^0.0.8",
+    "typescript": "^4.5.2"
+  }
+}

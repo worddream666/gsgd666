@@ -1,0 +1,42 @@
+# GameCreator Project .gitignore
+
+# Build outputs
+dist/
+out/
+*.js.map
+*.tsbuildinfo
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Game saves
+savedata/
+*.gcdata
+
+# User data
+gcUserData/
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor cache
+.vscode/
+.idea/
+*.swp
+*.bak
+*~
+
+# Runtime data
+data/*.json
+
+# Large files
+asset/image/avatar/传送/processed_frames_50_1767278231789.zip
+asset/image/scene/1.png
+behaviorView/script.js
+editorAsset/locales/en.json
+GameCreator/script.js

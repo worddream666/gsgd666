@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset='utf-8' />
+<title>怪兽国度</title>
+<meta name='viewport' content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
+<meta name='apple-mobile-web-app-capable' content='yes' />
+<meta name='full-screen' content='true' />
+<meta name='screen-orientation' content='portrait' />
+<meta name='x5-fullscreen' content='true' />
+<meta name='360-fullscreen' content='true' />
+<meta http-equiv='Cache-Control' content='max-age=0' />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:#0a0a12;overflow:hidden;width:100vw;height:100vh}
+
+/* ===== 登录覆盖层 ===== */
+#loginOverlay{
+    position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;
+    background:#0a0a12;
+    display:flex;align-items:center;justify-content:center;
+    background-image:
+        radial-gradient(ellipse at 20% 30%,rgba(100,50,180,0.15) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 70%,rgba(30,80,160,0.12) 0%,transparent 50%),
+        radial-gradient(ellipse at 50% 100%,rgba(60,40,120,0.08) 0%,transparent 40%);
+    background-attachment:fixed;
+    transition:opacity 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+#loginOverlay.hidden{opacity:0;pointer-events:none}
+#loginOverlay::before{
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Cpath d='M-50 200 Q100 80 200 200 T450 200' fill='none' stroke='rgba(100,80,160,0.04)' stroke-width='2'/%3E%3Cpath d='M-50 280 Q100 160 200 280 T450 280' fill='none' stroke='rgba(80,60,140,0.03)' stroke-width='1'/%3E%3C/svg%3E") repeat;
+    pointer-events:none;opacity:0.6;
+}
+.login-container{width:100%;max-width:440px;padding:20px;z-index:1}
+.title-section{text-align:center;margin-bottom:36px;position:relative}
+.title-section::after{
+    content:'';position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);
+    width:80px;height:2px;background:linear-gradient(90deg,transparent,rgba(100,80,200,0.5),transparent);
+}
+.title-section .game-icon{
+    width:80px;height:80px;margin:0 auto 18px;
+    background:linear-gradient(145deg,#5a2a9a,#2a5aaa);
+    border-radius:22px;display:flex;align-items:center;justify-content:center;
+    font-size:36px;color:#fff;border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 12px 40px rgba(90,42,154,0.3),inset 0 2px 0 rgba(255,255,255,0.1);
+    animation:iconPulse 3s ease-in-out infinite;
+}
+@keyframes iconPulse{0%,100%{box-shadow:0 12px 40px rgba(90,42,154,0.3),inset 0 2px 0 rgba(255,255,255,0.1);}50%{box-shadow:0 12px 50px rgba(90,42,154,0.45),inset 0 2px 0 rgba(255,255,255,0.1),0 0 30px rgba(100,60,200,0.2);}}
+.title-section h1{font-size:30px;font-weight:700;color:#e8e0f0;letter-spacing:8px;text-shadow:0 0 30px rgba(150,100,255,0.3)}
+.title-section p{color:rgba(180,150,220,0.6);font-size:13px;margin-top:10px;letter-spacing:6px;text-transform:uppercase}
+.card{
+    background:rgba(18,14,28,0.85);border:1px solid rgba(100,80,160,0.18);
+    border-radius:20px;padding:32px 28px 28px;backdrop-filter:blur(24px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.tab-bar{display:flex;gap:0;margin-bottom:28px;background:rgba(255,255,255,0.03);border-radius:12px;padding:4px}
+.tab-bar button{
+    flex:1;padding:12px;border:none;background:none;color:rgba(180,150,220,0.4);
+    font-size:15px;font-weight:600;cursor:pointer;border-radius:10px;transition:all 0.35s;font-family:inherit;letter-spacing:2px;
+}
+.tab-bar button.active{background:linear-gradient(135deg,rgba(90,50,180,0.25),rgba(40,80,180,0.2));color:#c8b0e8;box-shadow:0 4px 15px rgba(90,50,180,0.15)}
+.tab-bar button:hover:not(.active){color:rgba(200,180,240,0.7)}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:12px;color:rgba(180,150,220,0.55);margin-bottom:8px;font-weight:500;letter-spacing:2px}
+.form-group input{
+    width:100%;padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.04);
+    border:1px solid rgba(100,80,160,0.15);color:#d8d0e8;font-size:15px;outline:none;
+    transition:all 0.35s;font-family:inherit;box-shadow:inset 0 2px 4px rgba(0,0,0,0.1);
+}
+.form-group input:focus{border-color:rgba(100,60,200,0.4);background:rgba(255,255,255,0.07);box-shadow:inset 0 2px 4px rgba(0,0,0,0.1),0 0 20px rgba(100,60,200,0.15)}
+.form-group input::placeholder{color:rgba(180,150,220,0.25)}
+.submit-btn{
+    width:100%;padding:14px;border:none;border-radius:12px;
+    background:linear-gradient(135deg,#5a2a9a,#3a5aba);color:#fff;
+    font-size:16px;font-weight:600;cursor:pointer;transition:all 0.35s;
+    font-family:inherit;letter-spacing:3px;box-shadow:0 8px 30px rgba(90,42,154,0.3),inset 0 1px 0 rgba(255,255,255,0.15);margin-top:8px;
+}
+.submit-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(90,42,154,0.4),inset 0 1px 0 rgba(255,255,255,0.15);}
+.submit-btn:active{transform:translateY(0)}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none!important}
+.msg{text-align:center;font-size:13px;margin-top:12px;min-height:22px;display:none}
+.msg.error{color:#ff7070;display:block}
+.msg.success{color:#60d090;display:block}
+.form-panel{display:none}
+.form-panel.active{display:block}
+.footer-text{text-align:center;margin-top:18px;color:rgba(180,150,220,0.3);font-size:11px;letter-spacing:3px}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.15);border-top-color:#fff;border-radius:50%;animation:spin 0.6s linear infinite;vertical-align:middle;margin-right:5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== 加载提示 ===== */
+#loadingScreen{
+    position:fixed;z-index:9998;top:0;left:0;width:100%;height:100%;
+    background:linear-gradient(135deg,#0a0a12 0%,#12101e 100%);
+    display:none;align-items:center;justify-content:center;
+    color:rgba(200,180,240,0.5);font-size:14px;letter-spacing:4px;
+    flex-direction:column;gap:20px;
+}
+#loadingScreen::before{
+    content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:200px;height:200px;background:radial-gradient(circle,rgba(90,50,180,0.1) 0%,transparent 70%);pointer-events:none;
+}
+#loadingScreen .lds-ring{display:inline-block;width:48px;height:48px;position:relative}
+#loadingScreen .lds-ring div{display:block;width:40px;height:40px;margin:4px;border:3px solid rgba(120,80,200,0.15);border-radius:50%;border-top-color:#9a70df;animation:spin 0.9s linear infinite;box-shadow:0 0 20px rgba(150,100,255,0.2)}
+
+/* ===== 免责条款弹窗 ===== */
+#disclaimerOverlay{
+    display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.9);z-index:99998;align-items:center;justify-content:center;
+    backdrop-filter:blur(6px);
+}
+#disclaimerOverlay.show{display:flex}
+#disclaimerBox{
+    width:90%;max-width:480px;background:rgba(18,14,28,0.98);border:1px solid rgba(100,80,160,0.3);
+    border-radius:20px;padding:28px 24px;text-align:left;max-height:85vh;overflow-y:auto;
+    box-shadow:0 25px 80px rgba(0,0,0,0.6),0 0 50px rgba(100,80,160,0.1);
+}
+#disclaimerBox .disclaimer-title{
+    font-size:18px;font-weight:700;color:#e8e0f0;text-align:center;margin-bottom:18px;
+    text-shadow:0 0 20px rgba(150,100,255,0.3);
+}
+#disclaimerBox .disclaimer-content{
+    font-size:13px;color:rgba(200,180,220,0.85);line-height:1.9;margin-bottom:22px;
+}
+#disclaimerBox .disclaimer-section-title{
+    color:#c8b0e8;font-size:14px;margin:14px 0 8px;font-weight:600;
+}
+#disclaimerBox .disclaimer-highlight{color:#ff7070;font-weight:600;}
+#disclaimerBox .disclaimer-checkbox-wrap{
+    display:flex;align-items:center;gap:10px;cursor:pointer;margin-bottom:14px;
+}
+#disclaimerBox .disclaimer-checkbox{
+    width:20px;height:20px;cursor:pointer;accent-color:#5a2a9a;
+}
+#disclaimerBox .disclaimer-checkbox-label{
+    font-size:14px;color:rgba(200,180,220,0.8);
+}
+#disclaimerBox .disclaimer-confirm-btn{
+    width:100%;padding:14px;border:none;border-radius:12px;
+    background:linear-gradient(135deg,rgba(60,60,80,0.6),rgba(40,40,60,0.6));
+    color:rgba(200,180,220,0.35);font-size:15px;font-weight:600;
+    cursor:not-allowed;font-family:inherit;letter-spacing:2px;
+    transition:all 0.35s;
+}
+#disclaimerBox .disclaimer-confirm-btn.enabled{
+    background:linear-gradient(135deg,#5a2a9a,#3a5aba);
+    color:#fff;cursor:pointer;
+    box-shadow:0 8px 30px rgba(90,42,154,0.4),inset 0 1px 0 rgba(255,255,255,0.15);
+}
+#disclaimerBox .disclaimer-confirm-btn.enabled:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 40px rgba(90,42,154,0.5),inset 0 1px 0 rgba(255,255,255,0.15);
+}
+</style>
+</head>
+<body style="margin:0;background-color:#000;color:#FFF">
+
+<!-- 登录界面 -->
+<div id="loginOverlay">
+<div class="login-container">
+<div class="title-section">
+    <div class="game-icon">&#9876;</div>
+    <h1>怪兽国度</h1>
+    <p>月咏大陆 · 重建计划</p>
+</div>
+<div class="card">
+<div class="tab-bar">
+    <button class="active" onclick="switchTab('login')">登 录</button>
+    <button onclick="switchTab('register')">注 册</button>
+</div>
+
+<div class="form-panel active" id="loginPanel">
+    <div class="form-group"><label>用户名</label><input type="text" id="loginUsername" placeholder="输入用户名" maxlength="16"/></div>
+    <div class="form-group"><label>密码</label><input type="password" id="loginPassword" placeholder="输入密码"/></div>
+    <button class="submit-btn" id="loginBtn" onclick="handleLogin()">进入游戏</button>
+    <div class="msg error" id="loginError"></div>
+</div>
+
+<div class="form-panel" id="registerPanel">
+    <div class="form-group"><label>用户名</label><input type="text" id="regUsername" placeholder="2-16 个字符" maxlength="16"/></div>
+    <div class="form-group"><label>密码</label><input type="password" id="regPassword" placeholder="至少 6 个字符"/></div>
+    <div class="form-group"><label>确认密码</label><input type="password" id="regConfirm" placeholder="再次输入密码"/></div>
+    <button class="submit-btn" id="regBtn" onclick="handleRegister()">注册账号</button>
+    <div class="msg error" id="regError"></div>
+    <div class="msg success" id="regSuccess"></div>
+</div>
+</div>
+<div class="footer-text">游戏存档安全保存在本地设备</div>
+</div>
+</div>
+
+<!-- 加载中 -->
+<div id="loadingScreen"><div class="lds-ring"><div></div></div><span>加载游戏中...</span></div>
+
+<!-- 免责条款弹窗 -->
+<div id="disclaimerOverlay">
+    <div id="disclaimerBox">
+        <div class="disclaimer-title">⚠️ 登录须知</div>
+        <div class="disclaimer-content">
+            <div class="disclaimer-section-title">一、本地存储优先</div>
+            <p><span class="disclaimer-highlight">游戏本体内容全程本地存储</span>，您的游戏存档完全保存在本地设备中！</p>
+            <p>怪兽国度采用<strong>本地优先</strong>的存储策略，云端仅用于账号登录验证。</p>
+
+            <div class="disclaimer-section-title">二、数据安全提醒</div>
+            <p>· 游戏存档数据<span class="disclaimer-highlight">仅保存在浏览器本地</span></p>
+            <p>· 清除浏览器数据将导致本地存档丢失</p>
+            <p>· 建议定期手动备份重要存档</p>
+
+            <div class="disclaimer-section-title">三、账号登录说明</div>
+            <p>登录账号仅用于排行榜功能验证，您的游戏存档始终安全保存在本地，不会自动上传至服务器。</p>
+
+            <div class="disclaimer-section-title">四、免责声明</div>
+            <p>· 因设备故障、浏览器问题等导致的存档丢失，官方不承担责任</p>
+            <p>· 游戏保留随时修改本声明的权利</p>
+        </div>
+        <div class="disclaimer-checkbox-wrap">
+            <input type="checkbox" id="disclaimerCheckbox" class="disclaimer-checkbox" onchange="handleDisclaimerChange()"/>
+            <label for="disclaimerCheckbox" class="disclaimer-checkbox-label">我已详细阅读并了解上述声明内容</label>
+        </div>
+        <button id="disclaimerConfirmBtn" class="disclaimer-confirm-btn" onclick="handleDisclaimerConfirm()" disabled>请先勾选确认框</button>
+    </div>
+</div>
+
+<!-- 游戏引擎由 script.js 加载后自动渲染到这里 -->
+
+<script>
+// 服务器地址（部署时请修改为实际服务器地址）
+var API_URL = '/api.php';
+var SCRIPT_URL = 'script.js';
+var TOKEN_KEY = 'mk_token';
+var USER_KEY = 'mk_username';
+var SAVE_INTERVAL = 30000; // 30秒自动保存
+
+// ===== 工具 =====
+function qs(id) { return document.getElementById(id); }
+
+function showMsg(id, text, type) {
+    var el = qs(id);
+    if (!el) return;
+    el.textContent = text || '';
+    el.className = 'msg ' + (type || '');
+}
+
+function setLoading(btnId, loading) {
+    var btn = qs(btnId);
+    if (!btn) return;
+    btn.disabled = loading;
+    btn.innerHTML = loading ? '<span class="spinner"></span>处理中...' : btn.getAttribute('data-text');
+}
+
+function switchTab(name) {
+    qs('loginPanel').className = 'form-panel' + (name === 'login' ? ' active' : '');
+    qs('registerPanel').className = 'form-panel' + (name === 'register' ? ' active' : '');
+    document.querySelectorAll('.tab-bar button').forEach(function(b) { b.className = ''; });
+    var btn = name === 'login' ? document.querySelector('.tab-bar button:first-child') : document.querySelector('.tab-bar button:last-child');
+    if (btn) btn.className = 'active';
+}
+
+// 保存按钮原始文字
+var loginBtn = qs('loginBtn');
+if (loginBtn) loginBtn.setAttribute('data-text', '进入游戏');
+var regBtn = qs('regBtn');
+if (regBtn) regBtn.setAttribute('data-text', '注册账号');
+
+// ===== API 请求 =====
+function api(action, data, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', API_URL + '?action=' + action, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try { callback(JSON.parse(xhr.responseText)); }
+                catch(e) { callback(null); }
+            } else {
+                callback(null);
+            }
+        }
+    };
+    xhr.onerror = function() { callback(null); };
+    xhr.send(JSON.stringify(data));
+}
+
+// ===== 登录 =====
+function handleLogin() {
+    var username = qs('loginUsername').value.trim();
+    var password = qs('loginPassword').value.trim();
+    showMsg('loginError', '', '');
+    if (!username) { showMsg('loginError', '请输入用户名', 'error'); return; }
+    if (!password) { showMsg('loginError', '请输入密码', 'error'); return; }
+    setLoading('loginBtn', true);
+    api('login', { username: username, password: password }, function(result) {
+        setLoading('loginBtn', false);
+        if (result && result.code === 200 && result.data && result.data.user) {
+            onLoginSuccess(result.data.user.token, result.data.user.username);
+        } else {
+            showMsg('loginError', (result && result.message) || '登录失败', 'error');
+        }
+    });
+}
+
+// ===== 注册 =====
+function handleRegister() {
+    var username = qs('regUsername').value.trim();
+    var password = qs('regPassword').value.trim();
+    var confirm = qs('regConfirm').value.trim();
+    showMsg('regError', '', '');
+    showMsg('regSuccess', '', '');
+    if (!username) { showMsg('regError', '请输入用户名', 'error'); return; }
+    if (username.length < 2) { showMsg('regError', '用户名至少 2 个字符', 'error'); return; }
+    if (!password) { showMsg('regError', '请输入密码', 'error'); return; }
+    if (password.length < 6) { showMsg('regError', '密码至少 6 个字符', 'error'); return; }
+    if (password !== confirm) { showMsg('regError', '两次密码不一致', 'error'); return; }
+    setLoading('regBtn', true);
+    api('register', { username: username, password: password }, function(result) {
+        setLoading('regBtn', false);
+        if (result && result.code === 200 && result.data && result.data.user) {
+            showMsg('regSuccess', '注册成功，正在进入游戏...', 'success');
+            setTimeout(function() {
+                onLoginSuccess(result.data.user.token, result.data.user.username);
+            }, 600);
+        } else {
+            showMsg('regError', (result && result.message) || '注册失败', 'error');
+        }
+    });
+}
+
+// ===== 登录成功后的处理 =====
+function onLoginSuccess(token, username) {
+    // 保存到 localStorage
+    try {
+        localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(USER_KEY, username);
+        sessionStorage.setItem('game_token', token);
+        sessionStorage.setItem('game_username', username);
+    } catch(e) {}
+    // 开始加载游戏引擎
+    startGame(token, username);
+}
+
+// ===== 加载游戏引擎 =====
+var _gameLoaded = false;
+
+function startGame(token, username) {
+    if (_gameLoaded) return;
+    _gameLoaded = true;
+
+    // 隐藏登录界面
+    qs('loginOverlay').className = 'login-overlay hidden';
+    // 显示加载中
+    qs('loadingScreen').style.display = 'flex';
+
+    // 注入 __extends (GameCreator 引擎需要)
+    if (typeof __extends === 'undefined') {
+        window.__extends = function(d, b) {
+            for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+            function __() { this.constructor = d; }
+            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+        };
+    }
+
+    // 加载 script.js (游戏引擎，已打包所有依赖)
+    var gameScript = document.createElement('script');
+    gameScript.src = SCRIPT_URL + '?r=' + Date.now();
+    gameScript.onload = function() {
+        qs('loadingScreen').style.display = 'none';
+        // 启动游戏
+        if (typeof main !== 'undefined') {
+            main();
+        }
+        // 注入 Token 到存档管理器
+        injectToken(token, username);
+        // 启动数据同步服务
+        startCloudSync(token);
+    };
+    document.body.appendChild(gameScript);
+}
+
+// ===== 注入 Token 到引擎存档管理器 =====
+function injectToken(token, username) {
+    var wait = function(retry) {
+        if (retry > 30) return;
+        try {
+            if (typeof GUI_SaveFileManager !== 'undefined') {
+                GUI_SaveFileManager.setUserToken(token);
+                // 设置游戏变量
+                try {
+                    if (typeof GameVariable !== 'undefined') {
+                        if (username) GameVariable.setString(14004, username);
+                        if (token) GameVariable.setNumber(14003, token);
+                    }
+                } catch(e) {}
+                // 从服务器下载存档到本地
+                downloadAllSaves();
+                console.log('[存档服务] Token 已注入');
+                return;
+            }
+        } catch(e) {}
+        setTimeout(function() { wait(retry + 1); }, 500);
+    };
+    wait(0);
+}
+
+// ===== 云存档同步 =====
+var _syncTimer = null;
+var _saveChecksums = {};
+
+function startCloudSync(token) {
+    // 先立即同步一次
+    uploadAllSaves(token);
+    // 每30秒自动同步
+    if (_syncTimer) clearInterval(_syncTimer);
+    _syncTimer = setInterval(function() {
+        uploadAllSaves(token);
+    }, SAVE_INTERVAL);
+    console.log('[存档服务] 自动同步已启动（每30秒）');
+}
+
+function uploadAllSaves(token) {
+    for (var slot = 1; slot <= 5; slot++) {
+        (function(s) {
+            var data = readLocalSave(s);
+            if (data === null) return;
+            var hash = hashCode(data);
+            if (_saveChecksums[s] === hash) return;
+
+            var dataStr = typeof data === 'object' ? JSON.stringify(data) : String(data);
+            var b64 = btoa(unescape(encodeURIComponent(dataStr)));
+            api('saveGameData', { token: token, slot: s, saveData: b64 }, function(result) {
+                if (result && result.code === 200) {
+                    _saveChecksums[s] = hash;
+                }
+            });
+        })(slot);
+    }
+}
+
+function downloadAllSaves() {
+    var token = '';
+    try { token = localStorage.getItem(TOKEN_KEY) || ''; } catch(e) {}
+    if (!token) return;
+
+    api('listSaves', { token: token }, function(result) {
+        if (!result || result.code !== 200 || !result.data || !result.data.slots) return;
+        var slots = result.data.slots;
+        for (var i = 0; i < slots.length; i++) {
+            (function(slotInfo) {
+                if (!slotInfo.hasData) return;
+                api('loadGameData', { token: token, slot: slotInfo.slot }, function(loadResult) {
+                    if (loadResult && loadResult.code === 200 && loadResult.data && loadResult.data.saveData) {
+                        try {
+                            var decoded = decodeURIComponent(escape(atob(loadResult.data.saveData)));
+                            var parsed = JSON.parse(decoded);
+                            writeLocalSave(slotInfo.slot, parsed);
+                            console.log('[存档服务] 槽位 ' + slotInfo.slot + ' 数据已同步');
+                        } catch(e) {}
+                    }
+                });
+            })(slots[i]);
+        }
+    });
+}
+
+function readLocalSave(slot) {
+    try {
+        var key = 'savedata/gamedata' + slot + '.gcdata';
+        if (typeof LocalStorage !== 'undefined') {
+            var d = LocalStorage.getJSON(key);
+            if (d) return d;
+        }
+        if (typeof localStorage !== 'undefined') {
+            var raw = localStorage.getItem(key);
+            if (raw) { try { return JSON.parse(raw); } catch(e) { return raw; } }
+        }
+    } catch(e) {}
+    return null;
+}
+
+function writeLocalSave(slot, data) {
+    try {
+        var key = 'savedata/gamedata' + slot + '.gcdata';
+        if (typeof LocalStorage !== 'undefined') LocalStorage.setJSON(key, data);
+        if (typeof localStorage !== 'undefined') localStorage.setItem(key, JSON.stringify(data));
+    } catch(e) {}
+}
+
+function hashCode(obj) {
+    var str = typeof obj === 'string' ? obj : JSON.stringify(obj);
+    var hash = 0;
+    for (var i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash = hash & hash;
+    }
+    return hash.toString();
+}
+
+// ===== 免责条款 =====
+var _disclaimerCallback = null;
+
+function showDisclaimerOverlay(callback) {
+    _disclaimerCallback = callback;
+    var overlay = qs('disclaimerOverlay');
+    var btn = qs('disclaimerConfirmBtn');
+    var checkbox = qs('disclaimerCheckbox');
+    if (overlay) {
+        checkbox.checked = false;
+        btn.className = 'disclaimer-confirm-btn';
+        btn.disabled = true;
+        btn.textContent = '请先勾选确认框';
+        overlay.className = 'show';
+    }
+}
+
+function hideDisclaimerOverlay() {
+    var overlay = qs('disclaimerOverlay');
+    if (overlay) overlay.className = '';
+}
+
+function handleDisclaimerChange() {
+    var checkbox = qs('disclaimerCheckbox');
+    var btn = qs('disclaimerConfirmBtn');
+    if (checkbox && checkbox.checked) {
+        btn.className = 'disclaimer-confirm-btn enabled';
+        btn.disabled = false;
+        btn.textContent = '确认进入';
+    } else {
+        btn.className = 'disclaimer-confirm-btn';
+        btn.disabled = true;
+        btn.textContent = '请先勾选确认框';
+    }
+}
+
+function handleDisclaimerConfirm() {
+    var checkbox = qs('disclaimerCheckbox');
+    if (!checkbox || !checkbox.checked) return;
+    hideDisclaimerOverlay();
+    try {
+        localStorage.setItem('disclaimer_confirmed', 'true');
+    } catch(e) {}
+    if (_disclaimerCallback) {
+        _disclaimerCallback();
+    }
+}
+
+// ===== 页面初始化 =====
+(function init() {
+    var token = '';
+    var username = '';
+    try {
+        token = localStorage.getItem(TOKEN_KEY) || '';
+        username = localStorage.getItem(USER_KEY) || '';
+    } catch(e) {}
+
+    // 检查免责条款
+    var disclaimerConfirmed = false;
+    try {
+        disclaimerConfirmed = localStorage.getItem('disclaimer_confirmed') === 'true';
+    } catch(e) {}
+
+    // 过滤无效值
+    if (!token || token === 'undefined' || token === 'null' || !username) {
+        // 无 token，显示登录界面
+        return;
+    }
+
+    // 验证 token 有效性
+    api('check', { token: token }, function(result) {
+        if (result && result.code === 200) {
+            // Token 有效，显示免责条款
+            if (!disclaimerConfirmed) {
+                showDisclaimerOverlay(function() {
+                    startGame(token, username);
+                });
+            } else {
+                startGame(token, username);
+            }
+        } else {
+            // Token 过期，清除
+            try {
+                localStorage.removeItem(TOKEN_KEY);
+                localStorage.removeItem(USER_KEY);
+            } catch(e) {}
+        }
+    });
+})();
+
+// 回车提交
+document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    if (qs('loginPanel').className.indexOf('active') >= 0) {
+        handleLogin();
+    } else {
+        handleRegister();
+    }
+});
+</script>
+</body>
+</html>

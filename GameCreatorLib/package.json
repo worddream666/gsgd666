@@ -1,0 +1,16 @@
+{
+  "name": "@gamecreator/gamecreatorlib",
+  "version": "0.991.73",
+  "description": "gamecreator运行时",
+  "main": "gamecreator.js",
+  "types": "index.d.ts",
+  "author": "gamecreator",
+  "license": "ISC",
+  "files": [
+    "API",
+    "gamecreator.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

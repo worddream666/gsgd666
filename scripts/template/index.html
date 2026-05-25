@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8' />
+	<title>GameCreator</title>
+	<meta name='viewport'
+		content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' />
+	<meta name='apple-mobile-web-app-capable' content='yes' />
+	<meta name='full-screen' content='true' />
+	<meta name='screen-orientation' content='portrait' />
+	<meta name='x5-fullscreen' content='true' />
+	<meta name='360-fullscreen' content='true' />
+	<meta http-equiv='Cache-Control' content='max-age=0' />
+</head>
+<div id="errorMsgDiv" style="color:#FFFFFF;z-index: 9999999;position: absolute;font-size:13px;"></div>
+
+<body style="margin: 0px;background-color: #000;">
+	<script type="text/javascript" src="GameCreatorLib/gamecreator.js"></script>
+	<script type="text/javascript" src="out/Game.js"></script>
+	<script>
+		var runParamsArr = window.location.href.split("?").pop().split("runParams=");
+		var runParams;
+		if (runParamsArr.length == 2) {
+			runParams = decodeURIComponent(runParamsArr[1]).split("[,]");
+		}
+		if (typeof main != 'undefined') { runParams ? main.apply(null, runParams) : main(); } else { console.trace("没有找到main函数!"); }
+	</script>
+</body>
+
+</html>

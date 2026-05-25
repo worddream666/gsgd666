@@ -1,0 +1,10 @@
+{
+    "id": "example_mod_0",
+    "name": "示例MOD_0",
+    "version": "1.0.0",
+    "author": "无",
+    "description": "这是一个示例MOD，用于演示MOD系统的功能。",
+    "priority": 10,
+    "dependencies": [],
+    "conflicts": []
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'/>
+    <title>kdsrpg2.0</title>
+    <meta name='viewport'
+          content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no'/>
+    <meta name='apple-mobile-web-app-capable' content='yes'/>
+    <meta name='full-screen' content='true'/>
+    <meta name='screen-orientation' content='portrait'/>
+    <meta name='x5-fullscreen' content='true'/>
+    <meta name='360-fullscreen' content='true'/>
+    <meta http-equiv='Cache-Control' content='max-age=0'/>
+</head>
+<div id="errorMsgDiv" style="color:#FFFFFF;z-index: 9999999;position: absolute;font-size:13px;"></div>
+<body style="margin: 0px;background-color: #000;">
+
+</body>
+</html>
+<script>
+	// debugStart
+	/**
+	 * 抓取错误
+	 */
+	function catchError(type,errorMessage, scriptURI, lineNumber, columnNumber, errorObj){
+		scriptURI = scriptURI.replace(/\?r=\d*/g,"");
+		var urlRoot = window.location.href.split("/");
+		urlRoot.pop();
+		urlRoot.pop();
+		urlRoot.pop();
+		var uriRoot = urlRoot.join("/");
+		errorMsgDiv.innerHTML += " canvas builder -> " + decodeURIComponent(scriptURI.replace(uriRoot,""))+" at "+lineNumber+"："+errorMessage+"<br>";
+	}
+	window.addEventListener("keydown",function(e){
+		if(e.keyCode == 27){
+			if(top!=window){
+				if(parent==top){cancelFullScreen();}
+				else{parent.cancelFullScreen();}
+			}
+		}
+	},true);
+	// debugEnd
+    window.onerror = function(errorMessage, scriptURI, lineNumber,columnNumber,errorObj){
+		if(parent.catchError){
+		    parent.catchError("kdsrpgConsoleError",errorMessage, scriptURI, lineNumber, columnNumber, errorObj);
+			if(!errorObj.stack)return;
+			var stackArr = errorObj.stack.split("\n    at ");
+			stackArr.shift();
+			stackArr.shift();
+			stackArr.pop();
+			for(var i in stackArr){
+				setTimeout(function(i){
+					var stackStr = stackArr[i];
+					var fileNameArr = stackStr.split(" ");
+					var uriIdx = fileNameArr.length-1;
+					var fileNameIdx = fileNameArr.length-2;
+					var fileName = fileNameArr[fileNameIdx];
+					var scriptURI = fileNameArr[uriIdx].split(".js")[0].substr(1) + ".js";
+					var lineNumber = fileNameArr[uriIdx].split(":")[2];
+					var columnNumber = fileNameArr[uriIdx].split(":")[3];
+					parent.catchError("kdsrpgConsoleError","调用堆栈 at "+fileName, scriptURI, lineNumber, columnNumber, errorObj);
+				},i*50,i)
+			}
+		}
+    };
+	var _log = console.log;
+		console.log = function(){
+			if(parent!=window){
+			parent.console.log.apply(this,arguments);
+			}
+			else{
+			_log.apply(this,arguments);
+			}
+        };
+    var __extends = (this && this.__extends) || function (d, b) {
+                for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+                function __() { this.constructor = d; }
+                d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+	if(top.stopDragItem){
+		top.stopDragItem(document);
+	}
+</script>
+<script type="text/javascript" src="GameCreator/script.js" ></script>
+<script type="text/javascript" src="GameCreator/zrelease.js" ></script><script>
+               var runParamsArr = window.location.href.split("?").pop().split("runParams=");
+               var runParams;
+               if(runParamsArr.length==2){
+                  runParams = decodeURIComponent(runParamsArr[1]).split("[,]");
+               }
+               if(typeof main !='undefined'){runParams?main.apply(null,runParams):main();}else{console.trace("没有找到main函数!");}
+               </script>
