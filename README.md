@@ -13,7 +13,21 @@
 
 ---
 
-## I. Project Introduction
+## I. A Message From the Heart
+
+Do you remember that summer afternoon in elementary school, when you first clicked on the 4399 icon and rushed into Rainbow Forest of Monster World? Following Smarty Pig to defeat your first Naughty Pig, saving up materials for so long, finally crafting that long-awaited Fox Set, and watching the power stats on the panel, believing this world would always be here waiting for us.
+
+Later we learned that starting from 2015, the development team faced funding difficulties, no new updates came, and veteran players slowly drifted away. To survive, the studio had to pivot to mobile games, and Monster World gradually shut down. In the autumn of 2018, the server was no longer accessible, our saved materials, hard-earned sets, and promises with friends to play again tomorrow—all vanished in an instant.
+
+All these years have passed. We've grown from elementary school kids to working adults, with new lives, new friends, but there's still a place in our hearts reserved for that Rainbow Forest, that Naughty Pig, and that Fox Set we saved up for so long.
+
+Now, this world is back. I've rebuilt it and named it **Monster Kingdom**. This is not a commercial game, just a nostalgic server for old players, no payments, no profits, just wanting those of us who miss it to return to that world, wear our old sets, defeat Wild Boars again, explore the rainforest once more, and finally complete the dreams we left unfinished.
+
+I don't want this memory to disappear again. So I've open-sourced it. That way, even if I can no longer maintain it in the future, someone else can continue. This world will always be here, **never to be shut down again**.
+
+---
+
+## II. Project Introduction
 
 Monster Kingdom is a 2D top-down ARPG (Action Role Playing Game) built on the GameCreator engine.
 
@@ -200,7 +214,7 @@ npm run build
 
 ---
 
-## V. Copyright Notice
+## V. Copyright Notice & Disclaimer
 
 ### 5.1 Project Nature Statement
 
@@ -210,7 +224,24 @@ npm run build
 - 💡 **Code Demonstration**: Demonstrating game development practices with GameCreator engine and PHP backend
 - 🎮 **Nostalgic Preservation**: Preserving classic game code implementations for old players to reminisce
 
-### 5.2 Disclaimer
+### 5.2 Server Function Statement
+
+⚠️ **Important**: The server-side of this project has very limited functionality and only provides:
+
+- 💬 **Chat System**: Text chat between players
+- 🏆 **Leaderboard System**: Player ranking data display
+
+**⚠️ The server does NOT store any game data!** Game data includes (but is not limited to):
+- ❌ Player character data
+- ❌ Inventory items
+- ❌ Equipment enhancement progress
+- ❌ Quest progress
+- ❌ Achievement unlock status
+- ❌ Reputation data
+
+All game data is stored on the player's **local device**. The server is only responsible for chat message forwarding and leaderboard statistics.
+
+### 5.3 Disclaimer
 
 ⚠️ **Important**: This project **does not guarantee** that every user can successfully run and deploy the development environment!
 
@@ -225,7 +256,7 @@ Due to the following reasons, we cannot guarantee that all users will successful
 - Check PHP environment configuration guides
 - Adjust according to your actual environment
 
-### 5.3 Copyright Attribution
+### 5.4 Copyright Attribution
 
 1. This project is a **non-commercial nostalgic project** created solely for preserving childhood memories. No commercial use is intended.
 
@@ -237,19 +268,7 @@ Due to the following reasons, we cannot guarantee that all users will successful
 
 ---
 
-## VI. Our Childhood Memories
-
-I still remember that summer in elementary school, when I first clicked on that icon in 4399 and rushed into Rainbow Forest. I followed Congcong Pig and defeated my first Naughty Pig. I saved materials for a long time, forged step by step, and finally made that much-desired Fox Set. Looking at the power on the panel, I thought this world would always be here, waiting for us to explore, waiting for us to defeat all monsters, waiting for us to finish all dungeons with friends.
-
-Years later, we learned that starting from 2015, the development team faced financial difficulties. Without new updates, players gradually left. To survive, the studio had to shift to mobile games. Monster World eventually shut down. In the autumn of 2018, the server was gone forever. The materials in our backpacks, the sets we saved for so long, the next meetings with friends - all disappeared in an instant.
-
-Now this world is back. I rebuilt it and named it **Monster Kingdom**. This is not a commercial game, just a non-profit server for old players. No payments, no profits - just for those of us who miss it, to return to that world, put on our old gear, fight boars again, walk through the tropical rainforest again, and finish the dreams we never completed.
-
-I don't want this memory to disappear again. So I made it open source. Even if I can't maintain it someday, others can continue. This world will always be here, **never shutting down again**.
-
----
-
-## VII. Acknowledgments
+## VI. Acknowledgments
 
 - [GameCreator](https://www.gamecreator.com/) - Game engine
 - All contributors
