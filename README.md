@@ -202,13 +202,38 @@ npm run build
 
 ## V. Copyright Notice
 
+### 5.1 Project Nature Statement
+
+⚠️ **Important Notice**: This project is an open-source project for **learning, communication, and code demonstration**. The purpose of this project is:
+
+- 🎓 **Learning & Communication**: For game development enthusiasts to learn 2D ARPG game development techniques
+- 💡 **Code Demonstration**: Demonstrating game development practices with GameCreator engine and PHP backend
+- 🎮 **Nostalgic Preservation**: Preserving classic game code implementations for old players to reminisce
+
+### 5.2 Disclaimer
+
+⚠️ **Important**: This project **does not guarantee** that every user can successfully run and deploy the development environment!
+
+Due to the following reasons, we cannot guarantee that all users will successfully run this project:
+- Different versions of GameCreator engine may cause compatibility issues
+- PHP environment configuration differences may affect server-side operation
+- Network environment and port configuration may vary
+- Dependency version differences may cause build failures
+
+**If you encounter environment configuration issues, this is normal.** We recommend:
+- Refer to GameCreator official documentation
+- Check PHP environment configuration guides
+- Adjust according to your actual environment
+
+### 5.3 Copyright Attribution
+
 1. This project is a **non-commercial nostalgic project** created solely for preserving childhood memories. No commercial use is intended.
 
 2. All original game assets, story content, and world settings are copyrighted by **Ninja Cat Studio** and **4399 Network Co., Ltd.**
 
-3. All self-developed server and client code is released under the **MIT License**, freely usable, modifiable, and distributable for nostalgic purposes only.
+3. All self-developed server and client code is released under the **MIT License**, freely usable, modifiable, and distributable for learning, communication, and nostalgic preservation.
 
-4. If the original copyright holders have any objections, please contact me and I will immediately take down all related content.
+4. If the original copyright holder believes this project infringes on legitimate rights, please contact me and I will immediately remove all related content.
 
 ---
 
