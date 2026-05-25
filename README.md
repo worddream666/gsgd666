@@ -2,12 +2,11 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP">
   <img src="https://img.shields.io/badge/Engine-GameCreator-orange?style=flat-square" alt="GameCreator">
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License">
 </p>
 
-> Dedicated to all children who left their memories in Monster World
+> Dedicated to all children who left their memories in Monster World. I intended to sing to the bright moon, but the moon shines on the evil dragon.
 
 [English](README.md) | [简体中文](README_zh_CN.md)
 
@@ -15,72 +14,72 @@
 
 ## I. A Message From the Heart
 
-Do you remember that summer afternoon in elementary school, when you first clicked on the 4399 icon and rushed into Rainbow Forest of Monster World? Following Smarty Pig to defeat your first Naughty Pig, saving up materials for so long, finally crafting that long-awaited Fox Set, and watching the power stats on the panel, believing this world would always be here waiting for us.
+Do you remember that summer afternoon in elementary school, when you first clicked on the 4399 icon and rushed into Rainbow Forest of Monster World? Following Smarty Pig to defeat your first Naughty Pig, saving up materials for so long, finally crafting that long-awaited various sets. On the way to school, thinking about having enough money to buy a Crocodile Set. Looking at the stats on the panel, believing this world would always be here waiting for us to explore, waiting for us to defeat all monsters, waiting for us to dominate in Thorn Island.
 
-Later we learned that starting from 2015, the development team faced funding difficulties, no new updates came, and veteran players slowly drifted away. To survive, the studio had to pivot to mobile games, and Monster World gradually shut down. In the autumn of 2018, the server was no longer accessible, our saved materials, hard-earned sets, and promises with friends to play again tomorrow—all vanished in an instant.
+All these years have passed. We've grown from elementary school kids to working adults, with new lives, new friends, but there's still a place in our hearts reserved for that Rainbow Forest, for the story that started with a Naughty Pig, a Mischievous Monkey, and a Kabibear.
 
-All these years have passed. We've grown from elementary school kids to working adults, with new lives, new friends, but there's still a place in our hearts reserved for that Rainbow Forest, that Naughty Pig, and that Fox Set we saved up for so long.
+Now, the Moon Chanting Continent is being rebuilt, named **Monster Kingdom**. This is not a commercial game. Player game data is stored entirely locally, just a nostalgic experience for old players, no payments, just wanting those of us who miss it to return to that world, wear our old sets, fight Sawtooth Sharks again, explore Rainbow Forest again, and finally complete the unfinished dreams of the Tower of Dreams.
 
-Now, this world is back. I've rebuilt it and named it **Monster Kingdom**. This is not a commercial game, just a nostalgic server for old players, no payments, no profits, just wanting those of us who miss it to return to that world, wear our old sets, defeat Wild Boars again, explore the rainforest once more, and finally complete the dreams we left unfinished.
-
-I don't want this memory to disappear again. So I've open-sourced it. That way, even if I can no longer maintain it in the future, someone else can continue. This world will always be here, **never to be shut down again**.
+In 2025, I heard there were some small conflicts between the remake author and the Little Hunters. Those who used to steal accounts and scam accounts are back today in a new form, using the name of Monster World to scam money and exploit nostalgia (if you can reach the Imperial Capital, **you will see him being punished by Saiwen to water the Miracle Tree**). I don't like self-deception, and this year I don't want it to disappear again. So I open-sourced it, so that others can continue. This world will always be here, **never shutting down again**. If you're interested, feel free to contact me and join building the Moon Chanting Continent together.
 
 ---
 
 ## II. Project Introduction
 
-Monster Kingdom is a 2D top-down ARPG (Action Role Playing Game) built on the GameCreator engine.
+Monster Kingdom is a nostalgic open-source recreation of the classic 4399 web game "Monster World", created to preserve childhood memories for returning players. Game data is stored entirely locally with no payment entry or paid items. Wings and pets will be in the future Miao Crystal Mall, obtainable through activities like Desert Gold Rush, Miao Qianxun, Mystery Winged, Naughty Pig Battle, etc. The Flame Hall gameplay has been implemented.
 
-This project is a **nostalgic open-source recreation** of the classic 4399 web game "Monster World", created to preserve childhood memories for returning players.
+![Game Screenshot 1](screenshots/01.png)
+
+![Game Screenshot 3](screenshots/03.jpg)
 
 ### Core Features
 
 - **Real-time Battle System** - Smooth ARPG combat experience
 - **Multi-Controller Support** - Keyboard, Mouse, Gamepad
 - **Plugin System** - Quests, Achievements, Forging, Reputation, etc.
-- **Cloud Save** - Server-side save synchronization
-- **Leaderboard** - Global player rankings
+
+Video content available on Douyin:
+
+<img src="screenshots/02.jpg" alt="Douyin QR Code" style="zoom: 25%;" /><img src="screenshots/04.png" alt="Douyin QR Code" style="zoom: 25%;" />
 
 ### Open Source Content
 
-This project is fully open source, including:
+This project is fully open-source, including:
 
 | Module | Description | Status |
 |--------|-------------|--------|
 | Game Client | TypeScript source code | ✅ Open Source |
-| Server Side | PHP API code | ✅ Open Source |
-| Game Assets | Resources and configurations | ✅ Open Source |
+| Game Resources | Assets, config files | ✅ Open Source |
 | Documentation | Technical documentation | ✅ Open Source |
 
-### Tech Stack
+### Technical Architecture
 
 | Category | Technology | Description |
-|----------|------------|-------------|
-| Engine | GameCreator | Core game engine |
+|----------|-----------|-------------|
+| Game Engine | GameCreator | Core game engine |
 | Client | TypeScript | Game logic development |
-| Server | PHP | API server |
-| Database | JSON/File | Data storage |
 
 ---
 
-## II. Game World Restoration
+## III. Game World Restoration
 
 ### Classic Maps
 
 #### Lotus Village (Beginner Zone)
 - Starting area for new players
-- NPCs: 【Scout】Iron Dark, 【Scout】Iron Light, 【Moon咏Guide】Sister Hua, 【Reward Ambassador】Ah Chun, 【Blacksmith】Silver Forge
+- NPCs: 【Scout】Iron Dark, 【Scout】Iron Light, 【Moon Chanting Guide】Sister Hua, 【Reward Ambassador】Ah Chun, 【Blacksmith】Silver Forge
 - Monsters: 【12】Captive Stick Bear, 【8】Captive Mischievous Monkey
 
 #### Rainbow Forest
 - Beginner leveling area
 - Monsters: Naughty Pig, Mischievous Monkey
-- BOSS: Naughty Pig Battle (waiting)
+- Activity: Naughty Pig Battle (waiting)
 
 #### Rainbow Village
 - Coastal fishing village
 - Monsters: White Shark, Amphibious Fishman, Fishman Captain, White Shark Captain (waiting)
 - Dungeon: Sawtooth Shark (optimizing)
+- Activity: Stone Whale Prison (waiting)
 
 #### Star Hunting City (In Development)
 - Main city
@@ -104,22 +103,23 @@ gsgd-open/
 │   └── system/               # System Modules
 │       ├── 锻造代码/         # Forging System
 │       └── 副本/             # Dungeon System
-├── fwq/                      # Server Side
-│   ├── api.php               # Main API
-│   ├── secure_save_api.php   # Encrypted Save
-│   └── *.html                # Web Interfaces
 ├── asset/                    # Game Resources
 │   ├── audio/                # Audio Assets
 │   ├── image/                # Image Assets
 │   ├── json/                 # UI Configs
 │   └── language/             # Language Packs
+├── 建模/                     # 3D Model Resources
+│   ├── 铁匠.glb             # Blacksmith NPC Model
+│   ├── 守卫.glb             # Guard NPC Model
+│   ├── 新手阿春.glb         # Beginner Guide NPC Model
+│   └── 花花.glb             # HuaHua NPC Model
 ```
 
 ---
 
-## III. Module Architecture
+## IV. Module Details
 
-### 3.1 Core Modules
+### 4.1 Core Modules
 
 #### Game Entry (GCMain)
 
@@ -130,24 +130,24 @@ GameGate.start();
 
 #### Scene Controller (GameGate)
 
-Manages scene transitions, save/load operations.
+Manages game scene switching and save loading.
 
 | State | Description |
 |-------|-------------|
-| `STATE_0` | Leave Scene |
-| `STATE_1` | Load Scene |
-| `STATE_2` | Execute Enter Events |
-| `STATE_3` | Scene Complete |
-| `STATE_4` | Player Control Start |
+| `STATE_0` | Leave scene |
+| `STATE_1` | Load scene |
+| `STATE_2` | Execute enter event |
+| `STATE_3` | Scene complete |
+| `STATE_4` | Player controllable |
 
 #### Battle System (GameBattle)
 
-Core battle flow control, refreshes every 6 frames (~100ms).
+Core battle flow control, refreshes every 6 frames.
 
-### 3.2 UI System
+### 4.2 UI System
 
-| Interface | File | Description |
-|-----------|------|-------------|
+| Interface | File | Function |
+|-----------|------|----------|
 | Main | `GUI_Main.ts` | Status bar, quick actions |
 | Skills | `GUI_Skill.ts` | Skill list, details |
 | Bag | `GUI_Bag.ts` | Item management |
@@ -157,33 +157,18 @@ Core battle flow control, refreshes every 6 frames (~100ms).
 | Reputation | `Lmkrt_GUI_Favor.ts` | NPC reputation |
 | Forging | `Crafting_system.ts.ts` | Equipment enhancement |
 
-### 3.3 Network System
-
-#### Server API (fwq/)
-
-| File | Function |
-|------|----------|
-| `api.php` | Account, Save, Leaderboard |
-| `secure_save_api.php` | Encrypted Save |
-| `index.html` | Login Page |
-| `ranking.html` | Leaderboard |
-| `chat.html` | Chat Room |
-| `save_load.html` | Cloud Save |
-
 ---
 
-## IV. Getting Started
+## V. Quick Start
 
-### Prerequisites
+### Requirements
 
 - Node.js >= 16
-- PHP >= 7.4
-- Web Server (Nginx/Apache)
 
 ### Installation
 
 ```bash
-# Clone repository
+# Clone project
 git clone https://github.com/worddream666/gsgd666.git
 cd gsgd666
 
@@ -203,76 +188,41 @@ npm run build
 
 ### Deployment
 
-#### Frontend
 1. Build: `npm run build`
 2. Deploy `Game/dist/` to web server
 
-#### Backend
-1. Deploy `fwq/` to PHP server
-2. Configure database connection
-3. Set keys (required for production)
-
 ---
 
-## V. Copyright Notice & Disclaimer
+## VI. Copyright Notice & Disclaimer
 
-### 5.1 Project Nature Statement
+### 6.1 Project Nature Statement
 
 ⚠️ **Important Notice**: This project is an open-source project for **learning, communication, and code demonstration**. The purpose of this project is:
 
 - 🎓 **Learning & Communication**: For game development enthusiasts to learn 2D ARPG game development techniques
-- 💡 **Code Demonstration**: Demonstrating game development practices with GameCreator engine and PHP backend
-- 🎮 **Nostalgic Preservation**: Preserving classic game code implementations for old players to reminisce
+- 💡 **Code Demonstration**: Demonstrating game development practices with GameCreator engine
+- 🎮 **Nostalgic Preservation**: Recreating classic game code implementations for old players to reminisce
 
-### 5.2 Server Function Statement
+### 6.2 Disclaimer
 
-⚠️ **Important**: The server-side of this project has very limited functionality and only provides:
+⚠️ **Important**: This project **does not guarantee** that every user can successfully run and deploy the development environment! The **intention is to learn game operation, crafting, charging, combining, transferring, and Flame Hall flame pillar refresh/damage logic for educational purposes, NOT to help anyone set up private servers.**
 
-- 💬 **Chat System**: Text chat between players
-- 🏆 **Leaderboard System**: Player ranking data display
-
-**⚠️ The server does NOT store any game data!** Game data includes (but is not limited to):
-- ❌ Player character data
-- ❌ Inventory items
-- ❌ Equipment enhancement progress
-- ❌ Quest progress
-- ❌ Achievement unlock status
-- ❌ Reputation data
-
-All game data is stored on the player's **local device**. The server is only responsible for chat message forwarding and leaderboard statistics.
-
-### 5.3 Disclaimer
-
-⚠️ **Important**: This project **does not guarantee** that every user can successfully run and deploy the development environment!
-
-Due to the following reasons, we cannot guarantee that all users will successfully run this project:
-- Different versions of GameCreator engine may cause compatibility issues
-- PHP environment configuration differences may affect server-side operation
-- Network environment and port configuration may vary
-- Dependency version differences may cause build failures
-
-**If you encounter environment configuration issues, this is normal.** We recommend:
-- Refer to GameCreator official documentation
-- Check PHP environment configuration guides
-- Adjust according to your actual environment
-
-### 5.4 Copyright Attribution
+### 6.3 Copyright Attribution
 
 1. This project is a **non-commercial nostalgic project** created solely for preserving childhood memories. No commercial use is intended.
-
 2. All original game assets, story content, and world settings are copyrighted by **Ninja Cat Studio** and **4399 Network Co., Ltd.**
-
-3. All self-developed server and client code is released under the **MIT License**, freely usable, modifiable, and distributable for learning, communication, and nostalgic preservation.
-
-4. If the original copyright holder believes this project infringes on legitimate rights, please contact me and I will immediately remove all related content.
+3. All code is fully open under the **MIT License**, only for learning, communication, and nostalgic preservation. Please delete within 24 hours.
+4. If the original copyright holder believes this project infringes on legitimate rights, please contact me and I will immediately remove all related content. **3022074808@qq.com**
 
 ---
 
-## VI. Acknowledgments
+## VII. Acknowledgments
 
 - [GameCreator](https://www.gamecreator.com/) - Game engine
-- All contributors
 - All players who left memories in Monster World
+- All Little Hunters who haven't joined the Moon Chanting Continent yet, welcome to rebuild together
+
+<img src="screenshots/05.jpg" alt="Game Screenshot" style="zoom:33%;" />
 
 ---
 
