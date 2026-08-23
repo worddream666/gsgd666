@@ -222,7 +222,7 @@ npm run build
 - All players who left memories in Monster World
 - All Little Hunters who haven't joined the Moon Chanting Continent yet, welcome to rebuild together
 
-<img src="screenshots/05.jpg" alt="Game Screenshot" style="zoom:33%;" />
+
 
 ---
 
