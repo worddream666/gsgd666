@@ -212,7 +212,6 @@ npm run build
 1. This project is a **non-commercial nostalgic project** created solely for preserving childhood memories. No commercial use is intended.
 2. All original game assets, story content, and world settings are copyrighted by **Ninja Cat Studio** and **4399 Network Co., Ltd.**
 3. All code is fully open under the **MIT License**, only for learning, communication, and nostalgic preservation. Please delete within 24 hours.
-4. If the original copyright holder believes this project infringes on legitimate rights, please contact me and I will immediately remove all related content. **3022074808@qq.com**
 
 ---
 
