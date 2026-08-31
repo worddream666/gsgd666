@@ -14,7 +14,7 @@
 
 ## I. A Message From the Heart
 
-Do you remember that summer afternoon in elementary school, when you first clicked on the 4399 icon and rushed into Rainbow Forest of Monster World? Following Smarty Pig to defeat your first Naughty Pig, saving up materials for so long, finally crafting that long-awaited various sets. On the way to school, thinking about having enough money to buy a Crocodile Set. Looking at the stats on the panel, believing this world would always be here waiting for us to explore, waiting for us to defeat all monsters, waiting for us to dominate in Thorn Island.
+Do you remember that summer afternoon in elementary school, when you first  rushed into Rainbow Forest of Monster World? Following Smarty Pig to defeat your first Naughty Pig, saving up materials for so long, finally crafting that long-awaited various sets. On the way to school, thinking about having enough money to buy a Crocodile Set. Looking at the stats on the panel, believing this world would always be here waiting for us to explore, waiting for us to defeat all monsters, waiting for us to dominate in Thorn Island.
 
 All these years have passed. We've grown from elementary school kids to working adults, with new lives, new friends, but there's still a place in our hearts reserved for that Rainbow Forest, for the story that started with a Naughty Pig, a Mischievous Monkey, and a Kabibear.
 
